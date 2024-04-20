@@ -78,4 +78,5 @@ public class Cuenta {
     public void setId_cliente(Cliente id_cliente) {
         this.id_cliente = id_cliente;
     }
+
 }
