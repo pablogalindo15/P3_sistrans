@@ -7,15 +7,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
-    <div clas="container mx-auto w-25">
+    <div class="container mx-auto w-25"> <!-- Fixed typo: 'clas' to 'class' -->
         <h1>BancAndes</h1>
         <img th:src="@{/images/logo.png}" width="250"/>
         <div>
-    
-    <div>
-        <a th:href="@{/clientes}" class="btn btn-primary">Clientes</a>
-    </div>
-            
+            <div>
+                <a th:href="@{/clientes}" class="btn btn-primary">Clientes</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

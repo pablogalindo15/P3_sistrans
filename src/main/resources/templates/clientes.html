@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
-
 </head>
 <body>
     <div>
@@ -14,30 +13,29 @@
             <thead class="thead-dark">
                 <tr>
                     <th>idCliente</th>
-                    <th>usuario</th>
+                    <th>login</th>
                     <th>tipoCliente</th>
-                    <th>estadoCliente</th>
+                    <th>estado</th>
                     <th>Acciones</th>
-
                 </tr>
             </thead>
-            <th:block th:each="cliente:${clientes}">
-                <tr>
-                    <td: th:text="cliente.idCliente"></td:>
-                    <td: th:text="cliente.usuario"></td:>
-                    <td: th:text="cliente.tipoCliente"></td:>
-                    <td: th:text="cliente.estadoCliente"></td:>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.login}"></td>
+                    <td th:text="${cliente.tipo}"></td>
+                    <td th:text="${cliente.estado}"></td>
                     <td>
-                        <a th:href="@{clientes/{idCliente}/edit(idCliente=${cliente.idCliente})}"
-                        onclick="return confirm('Estas seguro de borrar este cliente?')">
+                        <a th:href="@{/clientes/{id}/edit(id=${cliente.id})}"
+                           onclick="return confirm('¿Estás seguro de borrar este cliente?')">
                             Editar
                         </a>
-                        <a href="@{clientes/{idCliente}/delete(idCliente=${cliente.idCliente})}">
+                        <a href="@{/clientes/{id}/delete(id=${cliente.id})}">
                             Borrar
                         </a>
                     </td>
                 </tr>
-            </th:block>
+            </tbody>
         </table>
         <div>
             <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
