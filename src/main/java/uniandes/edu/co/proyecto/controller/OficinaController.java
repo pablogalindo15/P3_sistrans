@@ -28,10 +28,11 @@ public class OficinaController {
     @GetMapping("/oficinas/new")
     public String formularioNuevaOficina(Model model) {
         model.addAttribute("oficina", new Oficina());
-        return "nueva-oficina";
+        return "oficinaNueva"; // Updated to correct file name
     }
+    
 
-    @PostMapping("/oficinas/save")
+    @PostMapping("/oficinas/new/save")
     public String guardarOficina(@ModelAttribute Oficina oficina) {
         oficinaRepository.save(oficina);
         return "redirect:/oficinas";
