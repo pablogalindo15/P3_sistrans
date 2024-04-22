@@ -16,7 +16,6 @@
                     <th>Nombre</th>
                     <th>Dirección</th>
                     <th>Número de Puestos</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,20 +24,11 @@
                     <td th:text="${oficina.nombre}"></td>
                     <td th:text="${oficina.dir}"></td>
                     <td th:text="${oficina.num_pa}"></td>
-                    <td>
-                        <a th:href="@{/oficinas/{id}/edit(id=${oficina.id})}" class="btn btn-info">
-                            Editar
-                        </a>
-                        <a th:href="@{/oficinas/{id}/delete(id=${oficina.id})}" class="btn btn-danger"
-                           onclick="return confirm('¿Estás seguro de borrar esta oficina?')">
-                            Borrar
-                        </a>
-                    </td>
                 </tr>
             </tbody>
         </table>
-        <div>
-            <a th:href="@{/oficinas/new}" class="btn btn-primary">Agregar nueva oficina</a>
+        <div class="mt-4">
+            <a th:href="@{/oficinas/new}" class="btn btn-success">Agregar nueva oficina</a>
             <a th:href="@{/}" class="btn btn-secondary">Volver al inicio</a>
         </div>
     </div>
