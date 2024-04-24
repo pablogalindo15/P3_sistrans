@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,14 @@ public class OficinaController {
     }
 
     @PostMapping("/oficinas/new/save")
-    public String guardarOficina(@ModelAttribute Oficina oficina) {
-        oficinaRepository.save(oficina); // Usando el método save predeterminado de JpaRepository
-        return "redirect:/oficinas";
+    public String guardarOficina(@ModelAttribute Oficina oficina, Model model) {
+        try {
+            oficinaRepository.save(oficina);
+            return "redirect:/oficinas";
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "Gerente no válido, ingrese un ID de gerente válido");
+            return "oficinaNueva"; // Devuelve a la página de formulario con el mensaje de error
+        }
     }
 
     @GetMapping("/oficinas/{id}/edit")
