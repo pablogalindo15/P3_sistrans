@@ -28,13 +28,12 @@ public class OficinaController {
     @GetMapping("/oficinas/new")
     public String formularioNuevaOficina(Model model) {
         model.addAttribute("oficina", new Oficina());
-        return "oficinaNueva"; // Updated to correct file name
+        return "oficinaNueva";
     }
-    
 
     @PostMapping("/oficinas/new/save")
     public String guardarOficina(@ModelAttribute Oficina oficina) {
-        oficinaRepository.save(oficina);
+        oficinaRepository.save(oficina); // Usando el método save predeterminado de JpaRepository
         return "redirect:/oficinas";
     }
 
@@ -43,7 +42,7 @@ public class OficinaController {
         Oficina oficina = oficinaRepository.findById(id).orElse(null);
         if (oficina != null) {
             model.addAttribute("oficina", oficina);
-            return "editar-oficina";
+            return "editarOficina"; // Asegúrate de que el nombre del archivo HTML es correcto
         } else {
             return "redirect:/oficinas";
         }
