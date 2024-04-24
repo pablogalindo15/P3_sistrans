@@ -16,7 +16,6 @@
                     <th>login</th>
                     <th>tipoCliente</th>
                     <th>estado</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,20 +25,16 @@
                     <td th:text="${cliente.tipo}"></td>
                     <td th:text="${cliente.estado}"></td>
                     <td>
-                        <a th:href="@{/clientes/{id}/edit(id=${cliente.id})}"
-                           onclick="return confirm('¿Estás seguro de borrar este cliente?')">
-                            Editar
-                        </a>
-                        <a href="@{/clientes/{id}/delete(id=${cliente.id})}">
-                            Borrar
-                        </a>
+                        
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div>
-            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        <div class="mt-4">
+            <a th:href="@{/clientes/new}" class="btn btn-primary">Agregar nuevo cliente</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
         </div>
+        
     </div>
 </body>
 </html>
