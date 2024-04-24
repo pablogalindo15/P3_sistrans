@@ -38,7 +38,7 @@ public class EmpleadoController {
         return "nuevo-empleado";
     }
 
-    @PostMapping("/empleados/save")
+    @PostMapping("/empleados/new/save")
     public String guardarEmpleado(@ModelAttribute Empleado empleado) {
         empleadoRepository.save(empleado);
         return "redirect:/empleados";

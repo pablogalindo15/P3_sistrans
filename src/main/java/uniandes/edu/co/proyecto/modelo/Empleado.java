@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Table(name="empleados")
 public class Empleado {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private Integer num_doc;
     private String tipo_doc;
