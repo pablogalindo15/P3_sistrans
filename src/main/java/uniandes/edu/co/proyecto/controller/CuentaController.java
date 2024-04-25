@@ -19,6 +19,7 @@ import uniandes.edu.co.proyecto.modelo.Cliente;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
 
+import java.util.Comparator;
 import java.util.Date;
 
 @Controller
@@ -52,9 +53,14 @@ public class CuentaController {
             filteredCuentas = filteredCuentas.filter(c -> c.getFechaUltimaTransaccion() != null && !c.getFechaUltimaTransaccion().before(minFechaUltimaTransaccion));
         }
     
-        model.addAttribute("cuentas", filteredCuentas.collect(Collectors.toList()));
+        List<Cuenta> sortedCuentas = filteredCuentas
+            .sorted(Comparator.comparing(Cuenta::getEstado, Comparator.comparingInt(s -> "Activa".equals(s) ? 1 : "Desactivada".equals(s) ? 2 : 3)))
+            .collect(Collectors.toList());
+    
+        model.addAttribute("cuentas", sortedCuentas);
         return "cuentas";
     }
+    
     
 
     @GetMapping("/cuentas/new")
