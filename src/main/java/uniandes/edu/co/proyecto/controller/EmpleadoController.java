@@ -35,7 +35,7 @@ public class EmpleadoController {
         List<Oficina> oficinas = oficinaRepository.findAll();
         model.addAttribute("empleado", new Empleado());
         model.addAttribute("oficinas", oficinas);
-        return "nuevo-empleado";
+        return "empleadoNuevo";
     }
 
     @PostMapping("/empleados/new/save")
