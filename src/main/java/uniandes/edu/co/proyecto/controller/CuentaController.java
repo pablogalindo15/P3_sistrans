@@ -38,7 +38,7 @@ public class CuentaController {
         return "nueva-cuenta";
     }
 
-    @PostMapping("/cuentas/save")
+    @PostMapping("/cuentas/new/save")
     public String guardarCuenta(@ModelAttribute Cuenta cuenta) {
         cuentaRepository.save(cuenta);
         return "redirect:/cuentas";

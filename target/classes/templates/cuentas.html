@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div>
+        <h1>Lista de Cuentas</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>id</th>
+                    <th>tipo</th>
+                    <th>numero</th>
+                    <th>saldo</th>
+                    <th>estado</th>
+                    <th>nombre cliente</th> 
+                    <th>id cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cuenta : ${cuentas}">
+                    <td th:text="${cuenta.id}"></td>
+                    <td th:text="${cuenta.tipo}"></td>
+                    <td th:text="${cuenta.numero}"></td>
+                    <td th:text="${cuenta.saldo}"></td>
+                    <td th:text="${cuenta.estado}"></td>
+                    <td th:text="${cuenta.id_cliente.nombre}"></td>
+                    <td th:text="${cuenta.id_cliente.id}"></td>
+
+
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-4">
+            <a th:href="@{/cuentas/new}" class="btn btn-primary">Agregar nueva cuenta</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
+        </div>
+        
+    </div>
+</body>
+</html>
