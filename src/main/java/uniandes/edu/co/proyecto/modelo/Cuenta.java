@@ -1,4 +1,5 @@
 package uniandes.edu.co.proyecto.modelo;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -6,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
+import jakarta.persistence.Column;
+
 @Entity
 @Table(name="cuentas")
 public class Cuenta {
@@ -20,17 +24,23 @@ public class Cuenta {
     @ManyToOne
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Cliente id_cliente;
-    public Cuenta(){;}
-    
-    public Cuenta(Integer id, String tipo, Integer numero, Integer saldo, String estado, Cliente id_cliente) {
+
+    @Column(name = "fecha_ultima_transaccion")
+    private LocalDate fechaUltimaTransaccion; // Nuevo campo para la fecha de la última transacción
+
+    public Cuenta() {;}
+
+    public Cuenta(Integer id, String tipo, Integer numero, Integer saldo, String estado, Cliente id_cliente, LocalDate fechaUltimaTransaccion) {
         this.id = id;
         this.tipo = tipo;
         this.numero = numero;
         this.saldo = saldo;
         this.estado = estado;
         this.id_cliente = id_cliente;
+        this.fechaUltimaTransaccion = fechaUltimaTransaccion;
     }
 
+    // Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -79,4 +89,11 @@ public class Cuenta {
         this.id_cliente = id_cliente;
     }
 
+    public LocalDate getFechaUltimaTransaccion() {
+        return fechaUltimaTransaccion;
+    }
+
+    public void setFechaUltimaTransaccion(LocalDate fechaUltimaTransaccion) {
+        this.fechaUltimaTransaccion = fechaUltimaTransaccion;
+    }
 }

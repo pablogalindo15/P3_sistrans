@@ -17,6 +17,7 @@
                     <th>numero</th>
                     <th>saldo</th>
                     <th>estado</th>
+                    <th>ultima transaccion</th>
                     <th>nombre cliente</th> 
                     <th>id cliente</th>
                 </tr>
@@ -28,6 +29,7 @@
                     <td th:text="${cuenta.numero}"></td>
                     <td th:text="${cuenta.saldo}"></td>
                     <td th:text="${cuenta.estado}"></td>
+                    <td th:text="${cuenta.FechaUltimaTransaccion}"></td>
                     <td th:text="${cuenta.id_cliente.nombre}"></td>
                     <td th:text="${cuenta.id_cliente.id}"></td>
 
