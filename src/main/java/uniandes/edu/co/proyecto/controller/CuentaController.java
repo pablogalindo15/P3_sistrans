@@ -58,7 +58,11 @@ public class CuentaController {
     public String actualizarEstadoCuenta(@PathVariable("id") Integer id, @ModelAttribute("estado") String estado) {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
         if (cuenta != null) {
-            cuenta.setEstado(estado);
+            if ("Activa".equalsIgnoreCase(estado) && cuenta.getSaldo() == 0) {
+                cuenta.setEstado("Cerrada");
+            } else {
+                cuenta.setEstado(estado);
+            }
             cuentaRepository.save(cuenta);
         }
         return "redirect:/cuentas";

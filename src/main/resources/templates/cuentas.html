@@ -35,8 +35,11 @@
                     <td th:text="${cuenta.id_cliente.id}"></td>
                     <td>
                         <a th:href="@{/cuentas/{id}/editEstado(id=${cuenta.id})}" th:if="${cuenta.estado == 'Activa'}">Desactivar Cuenta</a>
-
+                        <span th:if="${cuenta.estado == 'Activa' && cuenta.saldo == 0}"> | </span>
+                        <a th:href="@{/cuentas/{id}/updateEstado(id=${cuenta.id}, estado='Cerrada')}" th:if="${cuenta.estado == 'Activa' && cuenta.saldo == 0}">Cerrar Cuenta</a>
                     </td>
+                    
+                    
 
 
                 </tr>
