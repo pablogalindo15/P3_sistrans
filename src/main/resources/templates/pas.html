@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Puntos de Atencion</title>
+    <title>Puntox de Atencion</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
@@ -22,6 +22,10 @@
                     <td th:text="${pa.id}"></td>
                     <td th:text="${pa.tipo}"></td>
                     <td th:text="${pa.id_oficina.id}"></td>
+                    <td>
+                        <a th:href="@{pas/{id}/delete(id=${pa.id})}">Borrar</a>
+                    </td>
+                    
 
                 </tr>
             </tbody>
