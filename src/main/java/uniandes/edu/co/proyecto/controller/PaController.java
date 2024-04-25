@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,14 +33,18 @@ public class PaController {
     @GetMapping("/pas/new")
     public String formularioNuevoPa(Model model) {
         model.addAttribute("pa", new Pa());
-        model.addAttribute("oficinas", oficinaRepository.findAll());
-        return "nuevo-pa";
-    }
-
-    @PostMapping("/pas/save")
-    public String guardarPa(@ModelAttribute Pa pa) {
-        paRepository.save(pa);
-        return "redirect:/pas";
+        return "paNuevo";
+    } 
+ 
+    @PostMapping("/pas/new/save")
+    public String guardarpa(@ModelAttribute Pa pa, Model model) {
+        try {
+            paRepository.save(pa);
+            return "redirect:/pas";
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "id oficina invalido");
+            return "paNuevo"; 
+        }
     }
 
     @GetMapping("/pas/{id}/edit")

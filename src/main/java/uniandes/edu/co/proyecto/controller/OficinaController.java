@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +29,18 @@ public class OficinaController {
     @GetMapping("/oficinas/new")
     public String formularioNuevaOficina(Model model) {
         model.addAttribute("oficina", new Oficina());
-        return "nueva-oficina";
+        return "oficinaNueva";
     }
 
-    @PostMapping("/oficinas/save")
-    public String guardarOficina(@ModelAttribute Oficina oficina) {
-        oficinaRepository.save(oficina);
-        return "redirect:/oficinas";
+    @PostMapping("/oficinas/new/save")
+    public String guardarOficina(@ModelAttribute Oficina oficina, Model model) {
+        try {
+            oficinaRepository.save(oficina);
+            return "redirect:/oficinas";
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "Gerente no válido, ingrese un ID de gerente válido");
+            return "oficinaNueva"; // Devuelve a la página de formulario con el mensaje de error
+        }
     }
 
     @GetMapping("/oficinas/{id}/edit")
@@ -42,7 +48,7 @@ public class OficinaController {
         Oficina oficina = oficinaRepository.findById(id).orElse(null);
         if (oficina != null) {
             model.addAttribute("oficina", oficina);
-            return "editar-oficina";
+            return "editarOficina"; // Asegúrate de que el nombre del archivo HTML es correcto
         } else {
             return "redirect:/oficinas";
         }
