@@ -20,6 +20,7 @@
                     <th>ultima transaccion</th>
                     <th>nombre cliente</th> 
                     <th>id cliente</th>
+                    <th>editar estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,10 @@
                     <td th:text="${cuenta.FechaUltimaTransaccion}"></td>
                     <td th:text="${cuenta.id_cliente.nombre}"></td>
                     <td th:text="${cuenta.id_cliente.id}"></td>
+                    <td>
+                        <a th:href="@{/cuentas/{id}/editEstado(id=${cuenta.id})}" th:if="${cuenta.estado == 'Activa'}">Editar Estado</a>
+
+                    </td>
 
 
                 </tr>

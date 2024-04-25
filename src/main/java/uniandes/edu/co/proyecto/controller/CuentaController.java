@@ -44,6 +44,29 @@ public class CuentaController {
         return "redirect:/cuentas";
     }
 
+    @GetMapping("/cuentas/{id}/editEstado")
+    public String formularioEditarEstadoCuenta(@PathVariable("id") Integer id, Model model) {
+        Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
+        if (cuenta != null && ("Activa".equals(cuenta.getEstado()) || "activa".equals(cuenta.getEstado()))) {
+            model.addAttribute("cuenta", cuenta);
+            return "cuentaEditar";
+        }
+        return "redirect:/cuentas";
+    }
+    
+    @PostMapping("/cuentas/{id}/updateEstado")
+    public String actualizarEstadoCuenta(@PathVariable("id") Integer id, @ModelAttribute("estado") String estado) {
+        Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
+        if (cuenta != null) {
+            cuenta.setEstado(estado);
+            cuentaRepository.save(cuenta);
+        }
+        return "redirect:/cuentas";
+    }
+    
+/*
+ * 
+
     @GetMapping("/cuentas/{id}/edit")
     public String formularioEditarCuenta(@PathVariable("id") Integer id, Model model) {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
@@ -63,6 +86,7 @@ public class CuentaController {
         cuentaRepository.save(cuenta);
         return "redirect:/cuentas";
     }
+ */
 
     @GetMapping("/cuentas/{id}/delete")
     public String eliminarCuenta(@PathVariable("id") Integer id) {

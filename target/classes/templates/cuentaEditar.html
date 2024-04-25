@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Estado de Cuenta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <br>
+        <form th:action="@{/cuentas/{id}/updateEstado(id=${cuenta.id})}" th:object="${cuenta}" method="post">
+            <div th:replace="fragments/cuentaEditarForm :: cuentaEditarForm(titulo='Seleccione nuevo estado para la cuenta', cuenta=${cuenta}, action=@{/cuentas/{id}/updateEstado(id=${cuenta.id})})">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
