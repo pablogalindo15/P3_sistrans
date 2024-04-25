@@ -47,9 +47,23 @@ public class ObcController {
 
     @PostMapping("/obcs/new/save")
     public String guardarObc(@ModelAttribute Obc obc) {
+        // Obtener la cuenta asociada a la OBC
+        Cuenta cuenta = cuentaRepository.findById(obc.getId_cuenta().getId()).orElse(null);
+    
+        if (cuenta != null) {
+            // Comprobar si la fecha de la nueva OBC es posterior a la última fecha de transacción de la cuenta
+            if (cuenta.getFechaUltimaTransaccion() == null || obc.getFecha().after(cuenta.getFechaUltimaTransaccion())) {
+                // Actualizar la fecha de última transacción en la cuenta
+                cuenta.setFechaUltimaTransaccion(obc.getFecha());
+                cuentaRepository.save(cuenta);  // Guardar los cambios en la cuenta
+            }
+        }
+    
+        // Guardar la OBC
         obcRepository.save(obc);
         return "redirect:/obcs";
     }
+    
 
     @GetMapping("/obcs/{id}/edit")
     public String formularioEditarObc(@PathVariable("id") Integer id, Model model) {

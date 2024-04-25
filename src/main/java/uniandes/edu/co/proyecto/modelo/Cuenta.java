@@ -8,6 +8,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 
 @Entity
@@ -26,11 +28,11 @@ public class Cuenta {
     private Cliente id_cliente;
 
     @Column(name = "fecha_ultima_transaccion")
-    private LocalDate fechaUltimaTransaccion; // Nuevo campo para la fecha de la última transacción
+    private Date fechaUltimaTransaccion; // Nuevo campo para la fecha de la última transacción
 
     public Cuenta() {;}
 
-    public Cuenta(Integer id, String tipo, Integer numero, Integer saldo, String estado, Cliente id_cliente, LocalDate fechaUltimaTransaccion) {
+    public Cuenta(Integer id, String tipo, Integer numero, Integer saldo, String estado, Cliente id_cliente, Date fechaUltimaTransaccion) {
         this.id = id;
         this.tipo = tipo;
         this.numero = numero;
@@ -89,11 +91,11 @@ public class Cuenta {
         this.id_cliente = id_cliente;
     }
 
-    public LocalDate getFechaUltimaTransaccion() {
+    public Date getFechaUltimaTransaccion() {
         return fechaUltimaTransaccion;
     }
 
-    public void setFechaUltimaTransaccion(LocalDate fechaUltimaTransaccion) {
-        this.fechaUltimaTransaccion = fechaUltimaTransaccion;
+    public void setFechaUltimaTransaccion(java.sql.Date date) {
+        this.fechaUltimaTransaccion = date;
     }
 }
