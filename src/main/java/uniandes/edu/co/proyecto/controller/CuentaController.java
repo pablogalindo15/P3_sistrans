@@ -35,7 +35,7 @@ public class CuentaController {
         List<Cliente> clientes = clienteRepository.findAll();
         model.addAttribute("cuenta", new Cuenta());
         model.addAttribute("clientes", clientes);
-        return "nueva-cuenta";
+        return "cuentaNueva";
     }
 
     @PostMapping("/cuentas/new/save")
