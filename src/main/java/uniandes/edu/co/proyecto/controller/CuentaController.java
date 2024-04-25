@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.modelo.Cliente;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
@@ -63,7 +65,7 @@ public class CuentaController {
     
     
     @PostMapping("/cuentas/{id}/updateEstado")
-    public String actualizarEstadoCuenta(@PathVariable("id") Integer id, @ModelAttribute("estado") String estado) {
+    public String actualizarEstadoCuenta(@PathVariable("id") Integer id, @RequestParam("estado") String estado) {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
         if (cuenta != null) {
             if ("Desactivada".equalsIgnoreCase(estado)) {
