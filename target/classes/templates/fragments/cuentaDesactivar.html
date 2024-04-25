@@ -5,13 +5,12 @@
     <title>Fragmento Formulario de Edición de Cuenta</title>
 </head>
 <body>
-    <div th:fragment="cuentaEditarForm(titulo, cuenta, action)">
+    <div th:fragment="cuentaDesactivar(titulo, cuenta, action)">
         <h2 th:text="${titulo}">Editar Estado de Cuenta</h2>
         <form th:action="${action}" th:object="${cuenta}" method="post">
             <div>
                 <label for="estado">Nuevo Estado:</label>
                 <select id="estado" name="estado">
-                    <option value="Cerrada">Cerrar</option>
                     <option value="Desactivada">Desactivar</option>
                 </select>
             </div>

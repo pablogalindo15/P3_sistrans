@@ -9,7 +9,7 @@
 <body>
     <br>
         <form th:action="@{/cuentas/{id}/updateEstado(id=${cuenta.id})}" th:object="${cuenta}" method="post">
-            <div th:replace="fragments/cuentaEditarForm :: cuentaEditarForm(titulo='Seleccione nuevo estado para la cuenta', cuenta=${cuenta}, action=@{/cuentas/{id}/updateEstado(id=${cuenta.id})})">
+            <div th:replace="fragments/cuentaDesactivar :: cuentaDesactivar(titulo='Seleccione nuevo estado para la cuenta', cuenta=${cuenta}, action=@{/cuentas/{id}/updateEstado(id=${cuenta.id})})">
             </div>
         </form>
     </div>
