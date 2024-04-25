@@ -47,26 +47,35 @@ public class CuentaController {
     @GetMapping("/cuentas/{id}/editEstado")
     public String formularioEditarEstadoCuenta(@PathVariable("id") Integer id, Model model) {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
-        if (cuenta != null && ("Activa".equals(cuenta.getEstado()) || "activa".equals(cuenta.getEstado()))) {
-            model.addAttribute("cuenta", cuenta);
-            return "cuentaDesactivar";
+        if (cuenta != null && ("Activa".equalsIgnoreCase(cuenta.getEstado()) || "activa".equalsIgnoreCase(cuenta.getEstado()))) {
+            if (cuenta.getSaldo() == 0) {
+                cuenta.setEstado("Cerrada"); // Cambiar el estado a "Cerrada" si el saldo es 0
+                cuentaRepository.save(cuenta); // Guardar el cambio en la base de datos
+                model.addAttribute("cuenta", cuenta);
+                return "cuentaCerrar"; // Mostrar opción de cerrar cuenta
+            } else {
+                model.addAttribute("cuenta", cuenta);
+                return "cuentaDesactivar"; // Mostrar opción de desactivar cuenta
+            }
         }
         return "redirect:/cuentas";
     }
+    
     
     @PostMapping("/cuentas/{id}/updateEstado")
     public String actualizarEstadoCuenta(@PathVariable("id") Integer id, @ModelAttribute("estado") String estado) {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
         if (cuenta != null) {
-            if ("Activa".equalsIgnoreCase(estado) && cuenta.getSaldo() == 0) {
-                cuenta.setEstado("Cerrada");
-            } else {
+            if ("Desactivada".equalsIgnoreCase(estado)) {
+                cuenta.setEstado(estado);
+            } else if ("Cerrada".equalsIgnoreCase(estado)) {
                 cuenta.setEstado(estado);
             }
             cuentaRepository.save(cuenta);
         }
         return "redirect:/cuentas";
     }
+    
     
 /*
  * 
