@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes</title>
+    <title>Lista de Clientes</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </head>
 <body>
-    <div>
+    <div class="container mt-4">
         <h1>Lista de Clientes</h1>
-        <table class="table table-hover table-bordered">
+        
+        <!-- Formulario de Búsqueda -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Búsqueda avanzada
+            </div>
+            <div class="card-body">
+                <form th:action="@{/clientes}" method="get">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="id">ID de Cliente:</label>
+                                <select class="form-control" name="id" id="id">
+                                    <option value="">Seleccione un ID</option>
+                                    <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.id} + ' - ' + ${cliente.nombre}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Tabla de Clientes -->
+        <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>idCliente</th>
-                    <th>login</th>
-                    <th>tipoCliente</th>
-                    <th>estado</th>
+                    <th>ID</th>
+                    <th>Login</th>
+                    <th>Tipo de Cliente</th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,17 +51,15 @@
                     <td th:text="${cliente.login}"></td>
                     <td th:text="${cliente.tipo}"></td>
                     <td th:text="${cliente.estado}"></td>
-                    <td>
-                        
-                    </td>
+
                 </tr>
             </tbody>
         </table>
-        <div class="mt-4">
-            <a th:href="@{/clientes/new}" class="btn btn-primary">Agregar nuevo cliente</a>
-            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
-        </div>
         
+        <div class="text-center mb-4">
+            <a th:href="@{/clientes/new}" class="btn btn-success">Agregar nuevo cliente</a>
+            <a th:href="@{/}" class="btn btn-secondary">Volver al inicio</a>
+        </div>
     </div>
 </body>
 </html>
