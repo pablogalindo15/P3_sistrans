@@ -58,9 +58,17 @@ public class TransferenciaController {
         Cuenta cuenta2 = cuentaRepository.findById(idCuenta2).orElse(null);
 
         if (cuenta1 != null && cuenta2 != null && cuenta1.getSaldo() >= valor) {
-            // Realizar la transferencia
+            // Actualizar saldos de las cuentas
             cuenta1.setSaldo(cuenta1.getSaldo() - valor);
             cuenta2.setSaldo(cuenta2.getSaldo() + valor);
+
+            // Actualizar la fecha de última transacción si la fecha de la transferencia es más reciente
+            if (cuenta1.getFechaUltimaTransaccion() == null || fecha.after(cuenta1.getFechaUltimaTransaccion())) {
+                cuenta1.setFechaUltimaTransaccion(fecha);
+            }
+            if (cuenta2.getFechaUltimaTransaccion() == null || fecha.after(cuenta2.getFechaUltimaTransaccion())) {
+                cuenta2.setFechaUltimaTransaccion(fecha);
+            }
 
             TransferenciaPK pk = new TransferenciaPK(cuenta1, cuenta2, fecha, valor, tipo);
             Transferencia transferencia = new Transferencia();
