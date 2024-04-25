@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-    <div th:fragment="cuentaCerrarForm(titulo, cuenta, action)" class="container border border-2 w-25">
+    <div th:fragment="cuentaDesactivarForm(titulo, cuenta, action)" class="container border border-2 w-25">
         <h1 class="text-center" th:text="${titulo}">Editar Estado de Cuenta</h1>
         <form th:action="${action}" th:object="${cuenta}" method="post">
             <div class="form-group">

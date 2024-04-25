@@ -49,7 +49,7 @@ public class CuentaController {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
         if (cuenta != null && ("Activa".equals(cuenta.getEstado()) || "activa".equals(cuenta.getEstado()))) {
             model.addAttribute("cuenta", cuenta);
-            return "cuentaEditar";
+            return "cuentaDesactivar";
         }
         return "redirect:/cuentas";
     }
