@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div>
+        <h1>Lista de Prestamos</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>id</th>
+                    <th>monto</th>
+                    <th>interes</th>
+                    <th>cuotas</th>
+                    <th>dia pago</th>
+                    <th>estado</th> 
+                    <th>tipo</th>
+                    <th>nombre cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prestamo : ${prestamos}">
+                    <td th:text="${prestamo.id}"></td>
+                    <td th:text="${prestamo.monto}"></td>
+                    <td th:text="${prestamo.interes}"></td>
+                    <td th:text="${prestamo.cuotas}"></td>
+                    <td th:text="${prestamo.dia_pago}"></td>
+                    <td th:text="${prestamo.estado}"></td>
+                    <td th:text="${prestamo.tipo}"></td>
+                    <td th:text="${prestamo.id_cliente.nombre}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-4">
+            <a th:href="@{/prestamos/new}" class="btn btn-primary">Agregar nuevo prestamo</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
+        </div>
+        
+    </div>
+</body>
+</html>

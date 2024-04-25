@@ -33,10 +33,10 @@ public class PrestamoController {
     public String formularioNuevoPrestamo(Model model) {
         model.addAttribute("prestamo", new Prestamo());
         model.addAttribute("clientes", clienteRepository.findAll());
-        return "nuevo-prestamo";
+        return "prestamoNuevo";
     }
 
-    @PostMapping("/prestamos/save")
+    @PostMapping("/prestamos/new/save")
     public String guardarPrestamo(@ModelAttribute Prestamo prestamo) {
         prestamoRepository.save(prestamo);
         return "redirect:/prestamos";
