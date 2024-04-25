@@ -1,7 +1,9 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.sql.Date;
+import java.util.stream.Collectors;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,13 @@ public class TransferenciaController {
     
     @GetMapping("/transferencia/new")
     public String transferenciaForm(Model model) {
-        model.addAttribute("cuentas", cuentaRepository.findAll());
+        List<Cuenta> todasLasCuentas = cuentaRepository.findAll();
+        // Filtrar solo las cuentas activas usando Java Streams
+        List<Cuenta> cuentasActivas = todasLasCuentas.stream()
+            .filter(cuenta -> "Activa".equals(cuenta.getEstado()))
+            .collect(Collectors.toList());
+        
+        model.addAttribute("cuentas", cuentasActivas);
         return "transferenciaNueva";
     }
 
