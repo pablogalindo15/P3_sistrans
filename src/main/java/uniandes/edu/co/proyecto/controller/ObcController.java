@@ -35,10 +35,10 @@ public class ObcController {
         List<Cuenta> cuentas = cuentaRepository.findAll();
         model.addAttribute("obc", new Obc());
         model.addAttribute("cuentas", cuentas);
-        return "nuevo-obc";
+        return "obcsConsRetr";
     }
 
-    @PostMapping("/obcs/save")
+    @PostMapping("/obcs/new/save")
     public String guardarObc(@ModelAttribute Obc obc) {
         obcRepository.save(obc);
         return "redirect:/obcs";
