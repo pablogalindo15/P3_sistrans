@@ -13,6 +13,7 @@ import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.ObcRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ObcController {
@@ -32,11 +33,17 @@ public class ObcController {
 
     @GetMapping("/obcs/new")
     public String formularioNuevoObc(Model model) {
-        List<Cuenta> cuentas = cuentaRepository.findAll();
+        List<Cuenta> todasLasCuentas = cuentaRepository.findAll();
+        // Filtrar solo las cuentas activas usando Java Streams
+        List<Cuenta> cuentasActivas = todasLasCuentas.stream()
+            .filter(cuenta -> "Activa".equals(cuenta.getEstado()))
+            .collect(Collectors.toList());
+    
         model.addAttribute("obc", new Obc());
-        model.addAttribute("cuentas", cuentas);
+        model.addAttribute("cuentas", cuentasActivas);
         return "obcNueva";
     }
+    
 
     @PostMapping("/obcs/new/save")
     public String guardarObc(@ModelAttribute Obc obc) {
