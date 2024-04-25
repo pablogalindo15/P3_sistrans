@@ -1,26 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes</title>
+    <title>Lista de Cuentas</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </head>
 <body>
-    <div>
+    <div class="container mt-4">
         <h1>Lista de Cuentas</h1>
-        <table class="table table-hover table-bordered">
+        
+        <!-- Formulario de Búsqueda -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Búsqueda avanzada
+            </div>
+            <div class="card-body">
+                <form th:action="@{/cuentas}" method="get">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="tipo">Tipo de Cuenta:</label>
+                                <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ingrese el tipo de cuenta">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="minSaldo">Mínimo Saldo:</label>
+                                <input type="number" class="form-control" id="minSaldo" name="minSaldo" placeholder="Saldo mínimo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="maxSaldo">Máximo Saldo:</label>
+                                <input type="number" class="form-control" id="maxSaldo" name="maxSaldo" placeholder="Saldo máximo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="minFechaUltimaTransaccion">Desde Fecha (última transacción):</label>
+                                <input type="date" class="form-control" id="minFechaUltimaTransaccion" name="minFechaUltimaTransaccion">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Tabla de Cuentas -->
+        <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>id</th>
-                    <th>tipo</th>
-                    <th>numero</th>
-                    <th>saldo</th>
-                    <th>estado</th>
-                    <th>ultima transaccion</th>
-                    <th>nombre cliente</th> 
-                    <th>id cliente</th>
-                    <th>editar estado</th>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Número</th>
+                    <th>Saldo</th>
+                    <th>Estado</th>
+                    <th>Última Transacción</th>
+                    <th>Nombre Cliente</th>
+                    <th>ID Cliente</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +72,7 @@
                     <td th:text="${cuenta.numero}"></td>
                     <td th:text="${cuenta.saldo}"></td>
                     <td th:text="${cuenta.estado}"></td>
-                    <td th:text="${cuenta.FechaUltimaTransaccion}"></td>
+                    <td th:text="${#dates.format(cuenta.fechaUltimaTransaccion, 'yyyy-MM-dd')}"></td>
                     <td th:text="${cuenta.id_cliente.nombre}"></td>
                     <td th:text="${cuenta.id_cliente.id}"></td>
                     <td>
@@ -39,26 +81,17 @@
                                 <option value="Desactivada" th:if="${cuenta.estado == 'Activa'}">Desactivar Cuenta</option>
                                 <option value="Cerrada" th:if="${cuenta.estado == 'Activa' && cuenta.saldo == 0}">Cerrar Cuenta</option>
                             </select>
-                            <button type="submit">Confirmar</button>
+                            <button type="submit" class="btn btn-warning btn-sm">Cambiar Estado</button>
                         </form>
                     </td>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-
                 </tr>
             </tbody>
         </table>
-        <div class="mt-4">
-            <a th:href="@{/cuentas/new}" class="btn btn-primary">Agregar nueva cuenta</a>
-            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
-        </div>
         
+        <div class="text-center mb-4">
+            <a th:href="@{/cuentas/new}" class="btn btn-success">Agregar nueva cuenta</a>
+            <a th:href="@{/}" class="btn btn-secondary">Volver al inicio</a>
+        </div>
     </div>
 </body>
 </html>

@@ -1,6 +1,11 @@
 package uniandes.edu.co.proyecto.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +19,7 @@ import uniandes.edu.co.proyecto.modelo.Cliente;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
 
-import java.util.List;
+import java.util.Date;
 
 @Controller
 public class CuentaController {
@@ -26,11 +31,31 @@ public class CuentaController {
     private ClienteRepository clienteRepository;
 
     @GetMapping("/cuentas")
-    public String listarCuentas(Model model) {
+    public String listarCuentas(@RequestParam(required = false) String tipo,
+                                @RequestParam(required = false) Integer minSaldo,
+                                @RequestParam(required = false) Integer maxSaldo,
+                                @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date minFechaUltimaTransaccion,
+                                Model model) {
         List<Cuenta> cuentas = cuentaRepository.findAll();
-        model.addAttribute("cuentas", cuentas);
+        Stream<Cuenta> filteredCuentas = cuentas.stream();
+    
+        if (tipo != null && !tipo.isEmpty()) {
+            filteredCuentas = filteredCuentas.filter(c -> tipo.equals(c.getTipo()));
+        }
+        if (minSaldo != null) {
+            filteredCuentas = filteredCuentas.filter(c -> c.getSaldo() >= minSaldo);
+        }
+        if (maxSaldo != null) {
+            filteredCuentas = filteredCuentas.filter(c -> c.getSaldo() <= maxSaldo);
+        }
+        if (minFechaUltimaTransaccion != null) {
+            filteredCuentas = filteredCuentas.filter(c -> c.getFechaUltimaTransaccion() != null && !c.getFechaUltimaTransaccion().before(minFechaUltimaTransaccion));
+        }
+    
+        model.addAttribute("cuentas", filteredCuentas.collect(Collectors.toList()));
         return "cuentas";
     }
+    
 
     @GetMapping("/cuentas/new")
     public String formularioNuevaCuenta(Model model) {
