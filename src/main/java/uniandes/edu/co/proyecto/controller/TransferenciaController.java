@@ -32,7 +32,7 @@ public class TransferenciaController {
     @GetMapping("/transferencia/new")
     public String transferenciaForm(Model model) {
         model.addAttribute("cuentas", cuentaRepository.findAll());
-        return "transferenciaNuevo";
+        return "transferenciaNueva";
     }
 
     @PostMapping("/transferencia/new/save")
