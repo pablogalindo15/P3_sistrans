@@ -72,6 +72,10 @@
                 <label for="cargo" class="col-form-label">Cargo:</label>
                 <input class="form-control" type="text" id="cargo" name="cargo" required th:value="*{cargo}" />
             </div>
+            <div class="form-group">
+                <label for="id_oficina" class="col-form-label">ID Oficina</label>
+                <input class="form-control" type="text" id="id_oficina" name="id_oficina" required th:value="*{id_oficina}" />
+            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a th:href="@{/empleados}" class="btn btn-secondary">Cancelar</a>
