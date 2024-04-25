@@ -23,6 +23,12 @@ public class TransferenciaController {
     @Autowired
     private CuentaRepository cuentaRepository;
 
+    @GetMapping("/transferencias")
+    public String listarTransferencias(Model model) {
+        model.addAttribute("transferencias", transferenciaRepository.findAll());
+        return "transferencias";
+    }
+    
     @GetMapping("/transferencia/new")
     public String transferenciaForm(Model model) {
         model.addAttribute("cuentas", cuentaRepository.findAll());
