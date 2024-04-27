@@ -36,6 +36,7 @@ public class CuentaController {
                                 @RequestParam(required = false) Integer minSaldo,
                                 @RequestParam(required = false) Integer maxSaldo,
                                 @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date minFechaUltimaTransaccion,
+                                @RequestParam(required = false) Integer idCliente,
                                 Model model) {
         List<Cuenta> cuentas = cuentaRepository.findAll();
         Stream<Cuenta> filteredCuentas = cuentas.stream();
@@ -51,6 +52,9 @@ public class CuentaController {
         }
         if (minFechaUltimaTransaccion != null) {
             filteredCuentas = filteredCuentas.filter(c -> c.getFechaUltimaTransaccion() != null && !c.getFechaUltimaTransaccion().before(minFechaUltimaTransaccion));
+        }
+        if (idCliente != null) {
+            filteredCuentas = filteredCuentas.filter(c -> c.getId_cliente() != null && idCliente.equals(c.getId_cliente().getId()));
         }
     
         List<Cuenta> sortedCuentas = filteredCuentas
