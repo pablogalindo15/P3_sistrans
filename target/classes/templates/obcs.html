@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de OBCs</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div>
+        <h1>Lista de OBCs</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                    <th>Cuenta</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="obc : ${obcs}">
+                    <td th:text="${obc.id}"></td>
+                    <td th:text="${obc.fecha}"></td>
+                    <td th:text="${obc.valor}"></td>
+                    <td th:text="${obc.tipo}"></td>
+                    <td th:text="${obc.id_cuenta.numero}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-4">
+            <a th:href="@{/obcs/new}" class="btn btn-primary">Retirar / Consignar</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html>

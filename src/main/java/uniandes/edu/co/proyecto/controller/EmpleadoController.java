@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,13 +36,18 @@ public class EmpleadoController {
         List<Oficina> oficinas = oficinaRepository.findAll();
         model.addAttribute("empleado", new Empleado());
         model.addAttribute("oficinas", oficinas);
-        return "nuevo-empleado";
+        return "empleadoNuevo";
     }
 
-    @PostMapping("/empleados/save")
-    public String guardarEmpleado(@ModelAttribute Empleado empleado) {
-        empleadoRepository.save(empleado);
-        return "redirect:/empleados";
+    @PostMapping("/empleados/new/save")
+    public String guardarEmpleado(@ModelAttribute Empleado empleado, Model model) {
+        try {
+            empleadoRepository.save(empleado);
+            return "redirect:/empleados";
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "Oficina no válida, ingrese un ID de oficina válido");
+            return "empleadoNuevo";
+        }
     }
 
     @GetMapping("/empleados/{id}/edit")

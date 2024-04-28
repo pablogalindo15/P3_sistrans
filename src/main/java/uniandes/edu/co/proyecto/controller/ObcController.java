@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.modelo.Obc;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.ObcRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ObcController {
@@ -32,17 +35,54 @@ public class ObcController {
 
     @GetMapping("/obcs/new")
     public String formularioNuevoObc(Model model) {
-        List<Cuenta> cuentas = cuentaRepository.findAll();
+        List<Cuenta> todasLasCuentas = cuentaRepository.findAll();
+        // Filtrar solo las cuentas activas usando Java Streams
+        List<Cuenta> cuentasActivas = todasLasCuentas.stream()
+            .filter(cuenta -> "Activa".equals(cuenta.getEstado()))
+            .collect(Collectors.toList());
+    
         model.addAttribute("obc", new Obc());
-        model.addAttribute("cuentas", cuentas);
-        return "nuevo-obc";
+        model.addAttribute("cuentas", cuentasActivas);
+        return "obcNueva";
     }
+    
 
-    @PostMapping("/obcs/save")
-    public String guardarObc(@ModelAttribute Obc obc) {
-        obcRepository.save(obc);
-        return "redirect:/obcs";
+    @PostMapping("/obcs/new/save")
+    public String guardarObc(@ModelAttribute Obc obc, RedirectAttributes redirectAttributes, Model model) {
+        Cuenta cuenta = cuentaRepository.findById(obc.getId_cuenta().getId()).orElse(null);
+    
+        if (cuenta != null) {
+            if ("Retiro".equals(obc.getTipo())) {
+                if (cuenta.getSaldo() >= obc.getValor()) {
+                    cuenta.setSaldo(cuenta.getSaldo() - obc.getValor()); // Disminuir el saldo de la cuenta
+                    // Actualizar la fecha de última transacción si es necesario
+                    if (cuenta.getFechaUltimaTransaccion() == null || obc.getFecha().after(cuenta.getFechaUltimaTransaccion())) {
+                        cuenta.setFechaUltimaTransaccion(obc.getFecha());
+                    }
+                    cuentaRepository.save(cuenta); // Guardar los cambios en la cuenta
+                    obcRepository.save(obc); // Guardar la OBC
+                    return "redirect:/obcs";
+                } else {
+                    redirectAttributes.addFlashAttribute("error", "Saldo insuficiente para realizar el retiro.");
+                    redirectAttributes.addFlashAttribute("obc", obc); // Opcional: Volver a enviar datos de OBC
+                    return "redirect:/obcs/new";
+                }
+            } else if ("Consignación".equals(obc.getTipo())) {
+                cuenta.setSaldo(cuenta.getSaldo() + obc.getValor()); // Aumentar el saldo de la cuenta
+                // Actualizar la fecha de última transacción si es necesario
+                if (cuenta.getFechaUltimaTransaccion() == null || obc.getFecha().after(cuenta.getFechaUltimaTransaccion())) {
+                    cuenta.setFechaUltimaTransaccion(obc.getFecha());
+                }
+                cuentaRepository.save(cuenta); // Guardar los cambios en la cuenta
+                obcRepository.save(obc); // Guardar la OBC
+                return "redirect:/obcs";
+            }
+        }
+    
+        return "redirect:/obcs/new"; // En caso de que no exista la cuenta o haya algún otro error
     }
+    
+    
 
     @GetMapping("/obcs/{id}/edit")
     public String formularioEditarObc(@PathVariable("id") Integer id, Model model) {

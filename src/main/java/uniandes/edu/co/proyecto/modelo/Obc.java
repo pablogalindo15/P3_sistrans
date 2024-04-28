@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 @Table(name="obcs")
 public class Obc {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private Date fecha;
     private Integer valor;

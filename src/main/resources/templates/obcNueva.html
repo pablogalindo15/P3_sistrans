@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nueva OBC</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <br>
+    <form th:action="@{/obcs/new/save}" method="post">
+        <div th:replace="fragments/obcForm :: obcForm(titulo='Agregar Nueva OBC', obc=${obc})">
+        </div>
+    </form>
+</body>
+</html>
