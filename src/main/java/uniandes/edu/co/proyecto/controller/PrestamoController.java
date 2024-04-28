@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
 import uniandes.edu.co.proyecto.modelo.Prestamo;
 import uniandes.edu.co.proyecto.repositorio.PrestamoRepository;
 import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
@@ -23,9 +26,18 @@ public class PrestamoController {
     private ClienteRepository clienteRepository;
 
     @GetMapping("/prestamos")
-    public String listarPrestamos(Model model) {
+    public String listarPrestamos(Model model, String id) {
+        
         List<Prestamo> prestamos = prestamoRepository.findAll();
-        model.addAttribute("prestamos", prestamos);
+
+        if(id == null || id == "" ){
+            model.addAttribute("prestamos", prestamos);
+        }
+        else{
+            model.addAttribute("prestamos", prestamoRepository.darPrestamo(Integer.parseInt(id)));
+        }
+       
+        
         return "prestamos";
     }
 
@@ -61,9 +73,21 @@ public class PrestamoController {
         return "redirect:/prestamos";
     }
 
+    @GetMapping("/prestamos/{id}/{monto}")
+    public String pagarCuota(@PathVariable("monto") Integer monto, @PathVariable("id") Integer id){
+        prestamoRepository.pagarCuota(monto, id);
+        return "redirect:/prestamos";   
+    }
+
+    @GetMapping("/prestamos/cerrar/{id}")
+    public String cerrarPrestamo( @PathVariable("id") Integer id){
+        prestamoRepository.cerrarPrestamo( id);
+        return "redirect:/prestamos";   
+    }
     @GetMapping("/prestamos/{id}/delete")
     public String eliminarPrestamo(@PathVariable("id") Integer id) {
         prestamoRepository.deleteById(id);
         return "redirect:/prestamos";
     }
+
 }

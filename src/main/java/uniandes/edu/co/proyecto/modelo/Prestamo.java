@@ -21,13 +21,12 @@ public class Prestamo {
     private Date dia_pago;
     private String estado;
     private String tipo;
-
     @ManyToOne
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Cliente id_cliente;
     public Prestamo(){;}
     
-    public Prestamo(Integer id, Integer monto, Integer interes, Integer cuotas, Date dia_pago, String estado, String tipo, Cliente id_cliente) {
+    public Prestamo(Integer id, Integer monto, Integer interes, Integer cuotas, Date dia_pago, String estado, String tipo,Cliente id_cliente) {
         this.id = id;
         this.monto = monto;
         this.interes = interes;
@@ -102,4 +101,6 @@ public class Prestamo {
     public void setId_cliente(Cliente id_cliente) {
         this.id_cliente = id_cliente;
     }
+
+    
 }
