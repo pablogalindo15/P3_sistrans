@@ -6,18 +6,35 @@
     <title>Clientes</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-
-</div>
+<body>
+    <div>
+        <h1>Lista de Clientes</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>idCliente</th>
+                    <th>login</th>
+                    <th>tipoCliente</th>
+                    <th>estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.login}"></td>
+                    <td th:text="${cliente.tipo}"></td>
+                    <td th:text="${cliente.estado}"></td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-4">
+            <a th:href="@{/clientes/new}" class="btn btn-primary">Agregar nuevo cliente</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
+        </div>
+        
+    </div>
 </body>
 </html>
