@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.modelo.Cliente;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
@@ -75,12 +76,17 @@ public class CuentaController {
         return "cuentaNueva";
     }
 
+    @Transactional
     @PostMapping("/cuentas/new/save")
     public String guardarCuenta(@ModelAttribute Cuenta cuenta) {
-        cuentaRepository.save(cuenta);
-        return "redirect:/cuentas";
+        try {
+            cuentaRepository.save(cuenta);
+            return "redirect:/cuentas";
+        } catch (Exception e) {
+            System.out.println("No se guardo la cuenta correctamente, se hizo rollback de la trasaccion");
+            return "redirect:/cuentas/new"; 
+        }
     }
-
     @GetMapping("/cuentas/{id}/editEstado")
     public String formularioEditarEstadoCuenta(@PathVariable("id") Integer id, Model model) {
         Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
@@ -95,25 +101,27 @@ public class CuentaController {
                 return "cuentaDesactivar"; // Mostrar opción de desactivar cuenta
             }
         }
-        return "redirect:/cuentas";
+        return "redirect:/error.html";
     }
     
     
+    @Transactional
     @PostMapping("/cuentas/{id}/updateEstado")
     public String actualizarEstadoCuenta(@PathVariable("id") Integer id, @RequestParam("estado") String estado) {
-        Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
-        if (cuenta != null) {
-            if ("Desactivada".equalsIgnoreCase(estado)) {
-                cuenta.setEstado(estado);
-            } else if ("Cerrada".equalsIgnoreCase(estado)) {
-                cuenta.setEstado(estado);
+        try {
+            Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
+            if (cuenta != null) {
+                if ("Desactivada".equalsIgnoreCase(estado) || "Cerrada".equalsIgnoreCase(estado)) {
+                    cuenta.setEstado(estado);
+                    cuentaRepository.save(cuenta);
+                    return "redirect:/cuentas";
+                }
             }
-            cuentaRepository.save(cuenta);
+            return "redirect:/cuentas";
+        } catch (Exception e) {
+            return "redirect:/error.html";
         }
-        return "redirect:/cuentas";
     }
-    
-    
 /*
  * 
 
