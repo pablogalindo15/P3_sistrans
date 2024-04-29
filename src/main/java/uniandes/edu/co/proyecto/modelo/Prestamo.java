@@ -15,7 +15,7 @@ public class Prestamo {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    private Integer monto;
+    private Double monto;
     private Integer interes;
     private Integer cuotas;
     private Date dia_pago;
@@ -26,7 +26,7 @@ public class Prestamo {
     private Cliente id_cliente;
     public Prestamo(){;}
     
-    public Prestamo(Integer id, Integer monto, Integer interes, Integer cuotas, Date dia_pago, String estado, String tipo,Cliente id_cliente) {
+    public Prestamo(Integer id, Double monto, Integer interes, Integer cuotas, Date dia_pago, String estado, String tipo,Cliente id_cliente) {
         this.id = id;
         this.monto = monto;
         this.interes = interes;
@@ -46,11 +46,11 @@ public class Prestamo {
         this.id = id;
     }
 
-    public Integer getMonto() {
+    public Double getMonto() {
         return monto;
     }
 
-    public void setMonto(Integer monto) {
+    public void setMonto(Double monto) {
         this.monto = monto;
     }
 

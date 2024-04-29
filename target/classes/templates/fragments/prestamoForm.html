@@ -30,7 +30,9 @@
             </div>
             <div class="form-group">
                 <label for="estado" class="col-form-label">Estado:</label>
-                <input class="form-control" type="text" id="estado" name="estado" required th:value="*{estado}" />
+                <select class="form-control" id="estado" name="estado" required th:value="*{estado}">
+                    <option value="Pendiente aprobacion">Pendiente Aprobacion</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="tipo" class="col-form-label">Tipo de Préstamo:</label>
@@ -40,15 +42,19 @@
                     <option value="Automotriz">Automotriz</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="id_cliente" class="col-form-label">ID Cliente:</label>
-                <input class="form-control" type="number" id="id_cliente" name="id_cliente" required th:value="*{id_cliente}" />
+                <label for="id_cliente">ID de Cliente:</label>
+                <select class="form-control" name="id_cliente" id="id_cliente">
+                    <option value="">Seleccione un ID</option>
+                    <option th:each="cliente : ${clientes}" required th:value="${cliente.id}" th:text="${cliente.id} + ' - ' + ${cliente.nombre}"></option>
+                </select>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a th:href="@{/prestamos}" class="btn btn-secondary">Cancelar</a>
             </div>
-        </form>
+        </form>s
     </div>
 </body>
 </html>

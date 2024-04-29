@@ -32,7 +32,7 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO prestamos (id, monto, interes, cuotas, dia_pago, estado, tipo, id_cliente, monto_inicial) VALUES ( parranderos_sequence.nextval , :monto, :interes, :cuotas, :dia_pago, :estado, :tipo, :id_cliente)", nativeQuery = true)
-    void insertarPrestamo(@Param("monto") Integer monto, @Param("interes") Integer interes, @Param("cuotas") Integer cuotas, @Param("dia_pago") Date dia_pago, @Param("estado") String estado, @Param("tipo") String tipo, @Param("id_cliente") Integer id_cliente);
+    void insertarPrestamo(@Param("monto") Double monto, @Param("interes") Integer interes, @Param("cuotas") Integer cuotas, @Param("dia_pago") Date dia_pago, @Param("estado") String estado, @Param("tipo") String tipo, @Param("id_cliente") Integer id_cliente);
     
     @Modifying
     @Transactional
@@ -43,6 +43,11 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer> {
     @Transactional
     @Query(value = "UPDATE PRESTAMOS  SET MONTO = 0, estado='cerrado' WHERE ID = :id", nativeQuery = true)
     void cerrarPrestamo(@Param("id") long id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE PRESTAMOS  SET estado='aprobado' WHERE ID = :id", nativeQuery = true)
+    void aprobarPrestamo(@Param("id") long id);
 
   
 

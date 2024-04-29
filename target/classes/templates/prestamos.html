@@ -7,19 +7,36 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
-    
+    <div class="container mt-4">
     <div class ="text-center">
         <h1>Lista de Prestamos</h1>
-        <div>
-        <form th:action="@{prestamos}" method="get">
-            <label class= "col-form-label">Buscar Prestamo (ID):</label>
-            <input class:"form-control" type='number' id ='id' name='id' required th:value="*{id}">
-            <button type="submit" class="btn btn-primary">buscar</button>
+        <b>
+        <br>
 
-        </form>
+        <div class="card mb-5" style="width: 18rem; margin: auto; display: flex; justify-content: center; align-items: center;">
+           
+            <div class="card-header">
+                Buscar Prestamo por ID
+            </div>
+            <div class="card-body">
+                <form th:action="@{/prestamos}" method="get">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tipo"></label>
+                                <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese el id ">
+                            </div>
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
 
-    </div>
-        
+
+    </b>
+
+                
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -45,8 +62,8 @@
                     <td th:text="${prestamo.tipo}"></td>
                     <td th:text="${prestamo.id_cliente.nombre}"></td>
                     <td>
-                        <a th:href="@{prestamos/{id}/{monto}(id=${prestamo.id}, monto=${prestamo.monto})}">Pagar Cuota | </a>
-                        <a th:href="@{prestamos/cerrar/{id}(id=${prestamo.id})}">Cerrar</a>
+                        <a th:href="@{/prestamos/cerrar/{id}(id=${prestamo.id})}"> Cerrar|</a>
+                        <a th:href="@{/prestamos/aprobacion/{id}(id=${prestamo.id})}">Aprobar</a>
                         
                     </td>
                 </tr>
@@ -56,7 +73,7 @@
             <a th:href="@{/prestamos/new}" class="btn btn-primary">Agregar nuevo prestamo</a>
             <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
         </div>
-        
+    </div>
     </div>
 </body>
 </html>

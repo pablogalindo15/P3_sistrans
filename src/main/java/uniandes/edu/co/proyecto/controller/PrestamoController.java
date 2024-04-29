@@ -45,6 +45,8 @@ public class PrestamoController {
     public String formularioNuevoPrestamo(Model model) {
         model.addAttribute("prestamo", new Prestamo());
         model.addAttribute("clientes", clienteRepository.findAll());
+
+
         return "prestamoNuevo";
     }
 
@@ -81,7 +83,7 @@ public class PrestamoController {
 
     @GetMapping("/prestamos/cerrar/{id}")
     public String cerrarPrestamo( @PathVariable("id") Integer id){
-        prestamoRepository.cerrarPrestamo( id);
+        prestamoRepository.cerrarPrestamo(id);
         return "redirect:/prestamos";   
     }
     @GetMapping("/prestamos/{id}/delete")
@@ -89,5 +91,19 @@ public class PrestamoController {
         prestamoRepository.deleteById(id);
         return "redirect:/prestamos";
     }
+
+    @PostMapping("/prestamos/aprobado/{id}")
+    public String aprobarPrestamo(@PathVariable("id") Integer id) {
+        Prestamo prestamo = prestamoRepository.findById(id).orElse(null);
+        prestamo.setEstado("Aprobado");
+        return "redirect:/prestamos";
+    }
+
+    @GetMapping("/prestamos/aprobacion/{id}")
+    public String aprobar2Prestamo( @PathVariable("id") Integer id){
+        prestamoRepository.aprobarPrestamo(id);
+        return "redirect:/prestamos";   
+    }
+
 
 }
