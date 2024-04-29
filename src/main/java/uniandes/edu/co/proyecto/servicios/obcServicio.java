@@ -33,4 +33,11 @@ public class obcServicio {
     }
 
 
+    @Transactional(isolation = Isolation.READ_COMMITTED, readOnly = true)
+    public Collection<Obc> darObcsIdCuentaRC(Integer id) throws InterruptedException {
+        Collection<Obc> obcs = obcRepository.darObcsIdCuenta(id); 
+        return obcs;
+    }
+
+
 }

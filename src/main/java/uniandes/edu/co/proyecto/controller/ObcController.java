@@ -146,4 +146,21 @@ public class ObcController {
 
         return "obcsIso";
     }
+
+    @GetMapping("/obcs/iso")
+    public String listarObcsIsoRC(Model model, String id) throws NumberFormatException, InterruptedException {
+    
+        List<Obc>  obcs= obcRepository.findAll();
+
+        if(id == null || id == "" ){
+            model.addAttribute("obcs", obcs);
+        }
+        else{
+            model.addAttribute("obcs", obcServicio.darObcsIdCuenta(Integer.parseInt(id)));
+        }
+
+
+
+        return "obcsIso";
+    }
 }
