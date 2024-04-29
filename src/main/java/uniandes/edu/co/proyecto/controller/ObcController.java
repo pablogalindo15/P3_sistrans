@@ -14,6 +14,7 @@ import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.modelo.Obc;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.ObcRepository;
+import uniandes.edu.co.proyecto.servicios.obcServicio;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +24,9 @@ public class ObcController {
 
     @Autowired
     private ObcRepository obcRepository;
+
+    @Autowired
+    private obcServicio obcServicio;
 
     @Autowired
     private CuentaRepository cuentaRepository;
@@ -124,5 +128,22 @@ public class ObcController {
     public String eliminarObc(@PathVariable("id") Integer id) {
         obcRepository.deleteById(id);
         return "redirect:/obcs";
+    }
+
+    @GetMapping("/obcs/iso")
+    public String listarObcsIso(Model model, String id) throws NumberFormatException, InterruptedException {
+    
+        List<Obc>  obcs= obcRepository.findAll();
+
+        if(id == null || id == "" ){
+            model.addAttribute("obcs", obcs);
+        }
+        else{
+            model.addAttribute("obcs", obcServicio.darObcsIdCuenta(Integer.parseInt(id)));
+        }
+
+
+
+        return "obcsIso";
     }
 }
