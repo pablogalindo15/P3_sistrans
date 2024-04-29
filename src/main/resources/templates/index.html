@@ -7,23 +7,24 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
-    <div class="container mx-auto w-25"> <!-- Fixed typo: 'clas' to 'class' -->
-        <h1>BancAndes</h1>
-        <img th:src="@{/images/logo.png}" width="250"/>
-        <div>
-            <div>
-                <a th:href="@{/clientes}" class="btn btn-primary">Clientes</a>
-                <a th:href="@{/cuentas}" class="btn btn-primary">Cuentas</a>
-                <a th:href="@{/pas}" class="btn btn-primary">Puntos de atencion</a>
-                <a th:href="@{/obcs}" class="btn btn-primary">Operaciones Bancarias</a>
-                <a th:href="@{/empleados}" class="btn btn-primary">Empleados</a>
-                <a th:href="@{/transferencias}" class="btn btn-primary">Transferencias</a>
-                <a th:href="@{/prestamos}" class="btn btn-primary">Prestamos</a>
-                <a th:href="@{/oficinas}" class="btn btn-primary">oficinas</a>
-                <a th:href="@{/obps}" class="btn btn-primary">Operaciones Prestamos</a>
-                <a th:href="@{/obcs/iso}" class="btn btn-primary">Operaciones Cuenta Iso</a>
-                <a th:href="@{/obcs/iso/rc}" class="btn btn-primary">Operaciones Cuenta RC</a>
-            </div>
+    <div class="container mx-auto w-50"> <!-- Ajustado el ancho para mejor visualización -->
+        <h1 class="text-center my-3">BancAndes</h1> <!-- Agregado centrado y margen -->
+        <img th:src="@{/images/logo.png}" class="d-block mx-auto" width="250" alt="BancAndes Logo"/> <!-- Centrado de imagen -->
+
+        <!-- Navegación Principal -->
+        <div class="d-flex flex-wrap justify-content-center"> <!-- Flexbox para mejor disposición de los botones -->
+            <a th:href="@{/clientes}" class="btn btn-primary m-2">Clientes</a>
+            <a th:href="@{/cuentas}" class="btn btn-primary m-2">Cuentas</a>
+            <a th:href="@{/pas}" class="btn btn-primary m-2">Puntos de Atención</a>
+            <a th:href="@{/obcs}" class="btn btn-primary m-2">Operaciones Bancarias</a>
+            <a th:href="@{/empleados}" class="btn btn-primary m-2">Empleados</a>
+            <a th:href="@{/transferencias}" class="btn btn-primary m-2">Transferencias</a>
+            <a th:href="@{/prestamos}" class="btn btn-primary m-2">Préstamos</a>
+            <a th:href="@{/oficinas}" class="btn btn-primary m-2">Oficinas</a>
+            <a th:href="@{/obps}" class="btn btn-primary m-2">Operaciones Préstamos</a>
+            <!-- Asegúrate de que estos enlaces llevan a destinos únicos -->
+            <a th:href="@{/obcs/iso}" class="btn btn-primary m-2">Operaciones Cuenta ISO</a>
+            <a th:href="@{/obcs/iso/rc}" class="btn btn-primary m-2">Rec. Cuenta ISO</a>
         </div>
     </div>
 </body>
