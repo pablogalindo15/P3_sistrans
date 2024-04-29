@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import uniandes.edu.co.proyecto.modelo.Obc;
 import uniandes.edu.co.proyecto.modelo.Transferencia;
 import uniandes.edu.co.proyecto.modelo.TransferenciaPK;
 
@@ -19,6 +20,10 @@ public interface TransferenciaRepository extends JpaRepository<Transferencia, Tr
 
     @Query(value = "SELECT * FROM transferencias WHERE id_cuenta_1 = :id_cuenta_1 AND id_cuenta_2 = :id_cuenta_2 AND fecha = :fecha AND valor = :valor AND tipo = :tipo", nativeQuery = true)
     Transferencia darTransferenciaPorId(@Param("id_cuenta_1") Integer id_cuenta_1, @Param("id_cuenta_2") Integer id_cuenta_2, @Param("fecha") Date fecha, @Param("valor") Integer valor, @Param("tipo") String tipo);
+
+
+    @Query(value = "SELECT * FROM transferencias WHERE id_cuenta_1 = :id  AND FECHA >= TRUNC(SYSDATE) - 30", nativeQuery = true)
+    Collection<Transferencia> darTransferenciasIdCuenta(@Param("id") long id);
 
     @Modifying
     @Transactional

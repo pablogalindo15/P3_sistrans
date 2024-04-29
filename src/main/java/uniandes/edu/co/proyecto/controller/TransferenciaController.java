@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.Cuenta;
+import uniandes.edu.co.proyecto.modelo.Obc;
 import uniandes.edu.co.proyecto.modelo.Transferencia;
 import uniandes.edu.co.proyecto.modelo.TransferenciaPK;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
@@ -29,8 +30,17 @@ public class TransferenciaController {
     private CuentaRepository cuentaRepository;
 
     @GetMapping("/transferencias")
-    public String listarTransferencias(Model model) {
-        model.addAttribute("transferencias", transferenciaRepository.findAll());
+    public String listarTransferencias(Model model, String id) {
+        List<Transferencia>  transferencias= transferenciaRepository.findAll();
+
+        if(id == null || id == "" ){
+            model.addAttribute("transferencias", transferencias);
+        }
+        else{
+            model.addAttribute("transferencias", transferenciaRepository.darTransferenciasIdCuenta(Integer.parseInt(id)));
+        }
+
+
         return "transferencias";
     }
     
