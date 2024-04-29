@@ -28,9 +28,19 @@ public class ObcController {
     private CuentaRepository cuentaRepository;
 
     @GetMapping("/obcs")
-    public String listarObcs(Model model) {
-        List<Obc> obcs = obcRepository.findAll();
-        model.addAttribute("obcs", obcs);
+    public String listarObcs(Model model, String id) {
+    
+        List<Obc>  obcs= obcRepository.findAll();
+
+        if(id == null || id == "" ){
+            model.addAttribute("obcs", obcs);
+        }
+        else{
+            model.addAttribute("obcs", obcRepository.darObcsIdCuenta(Integer.parseInt(id)));
+        }
+
+
+
         return "obcs";
     }
 

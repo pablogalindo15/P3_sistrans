@@ -17,6 +17,12 @@ public interface ObcRepository extends JpaRepository<Obc, Integer> {
     Collection<Obc> darObcs();
 
     @Query(value = "SELECT * FROM obcs WHERE id = :id", nativeQuery = true)
+    Collection<Obc> darObcsId(@Param("id") long id);
+
+    @Query(value = "SELECT * FROM obcs WHERE id_cuenta = :id  AND FECHA >= TRUNC(SYSDATE) - 30", nativeQuery = true)
+    Collection<Obc> darObcsIdCuenta(@Param("id") long id);
+
+    @Query(value = "SELECT * FROM obcs WHERE id = :id", nativeQuery = true)
     Obc darObc(@Param("id") long id);
 
     @Modifying
