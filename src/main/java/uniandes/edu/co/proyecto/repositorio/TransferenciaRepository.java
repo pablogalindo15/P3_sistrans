@@ -22,7 +22,7 @@ public interface TransferenciaRepository extends JpaRepository<Transferencia, Tr
     Transferencia darTransferenciaPorId(@Param("id_cuenta_1") Integer id_cuenta_1, @Param("id_cuenta_2") Integer id_cuenta_2, @Param("fecha") Date fecha, @Param("valor") Integer valor, @Param("tipo") String tipo);
 
 
-    @Query(value = "SELECT * FROM transferencias WHERE id_cuenta_1 = :id  AND FECHA >= TRUNC(SYSDATE) - 30", nativeQuery = true)
+    @Query(value = "SELECT * FROM transferencias WHERE id_cuenta_1 = :id  AND FECHA >= TRUNC(SYSDATE) - 30 FOR UPDATE", nativeQuery = true)
     Collection<Transferencia> darTransferenciasIdCuenta(@Param("id") long id);
 
     @Modifying

@@ -51,7 +51,7 @@ public class ObpController {
     public String guardarObp(@ModelAttribute Obp obp, RedirectAttributes redirectAttributes, Model model) {
         Prestamo prestamo = prestamoRepository.findById(obp.getId_prestamo().getId()).orElse(null);
 
-        if (prestamo.getEstado().equals("Aprobado")) {
+       
     
             if(obp.getTipo().equals("pago cuota")){
                     prestamo.setMonto(prestamo.getMonto()-(prestamo.getInteres()*0.01*prestamo.getMonto()));
@@ -67,9 +67,8 @@ public class ObpController {
                 return("redirect:/obps");
                 
             }
-        return("redirect:/");
         
-    }
+    
     return("redirect:/");
 
 }

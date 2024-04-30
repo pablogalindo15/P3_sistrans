@@ -30,10 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="id_prestamo" class="col-form-label">Prestamo Asociada:</label>
-                <select class="form-control" id="id_prestamo" name="id_prestamo" required th:field="*{id_prestamo}">
-                    <option value="">Seleccione una prestamo</option>
-                    <option th:each="prestamo : ${prestamos}" th:text="${prestamo.id}" th:value="${prestamo.id}"></option>
-                </select>
+                <input class="form-control" type="id_prestamo" id="id_prestamo" name="id_prestamo" required th:value="*{id_prestamo}" />
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>

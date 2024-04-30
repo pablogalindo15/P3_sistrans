@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Transferencias</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class ="text-center">
+        <h1>Listado de Transferencias</h1>
+
+        <div class="card mb-5" style="width: 18rem; margin: auto; display: flex; justify-content: center; align-items: center;">
+           
+            <div class="card-header">
+                Buscar Transferencia por ID cuenta
+            </div>
+            <div class="card-body">
+                <form th:action="@{/transferencias/iso/rc}" method="get">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tipo"></label>
+                                <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese el id ">
+                            </div>
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Cuenta Origen</th>
+                    <th>ID Cuenta Destino</th>
+                    <th>Fecha</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="transferencia : ${transferencias}">
+                    <td th:text="${transferencia.pk.id_cuenta_1.id}"></td>
+                    <td th:text="${transferencia.pk.id_cuenta_2.id}"></td>
+                    <td th:text="${transferencia.pk.fecha}"></td>
+                    <td th:text="${transferencia.pk.valor}"></td>
+                    <td th:text="${transferencia.pk.tipo}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

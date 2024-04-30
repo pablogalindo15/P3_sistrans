@@ -19,12 +19,16 @@ import uniandes.edu.co.proyecto.modelo.Transferencia;
 import uniandes.edu.co.proyecto.modelo.TransferenciaPK;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.TransferenciaRepository;
+import uniandes.edu.co.proyecto.servicios.transferenciaServicio;
 
 @Controller
 public class TransferenciaController {
 
     @Autowired
     private TransferenciaRepository transferenciaRepository;
+
+    @Autowired
+    private transferenciaServicio transferenciaServicio;
 
     @Autowired
     private CuentaRepository cuentaRepository;
@@ -44,6 +48,7 @@ public class TransferenciaController {
         return "transferencias";
     }
     
+    @Transactional
     @GetMapping("/transferencia/new")
     public String transferenciaForm(Model model) {
         List<Cuenta> todasLasCuentas = cuentaRepository.findAll();
@@ -55,6 +60,40 @@ public class TransferenciaController {
         model.addAttribute("cuentas", cuentasActivas);
         return "transferenciaNueva";
     }
+    @Transactional
+    @GetMapping("/transferencias/iso/serializable")
+    public String listarTransferenciasSe(Model model, String id) throws NumberFormatException, InterruptedException {
+    
+        List<Transferencia>  transferencias= transferenciaRepository.findAll();
+
+        if(id == null || id == "" ){
+            model.addAttribute("transferencias", transferencias);
+        }
+        else{
+            model.addAttribute("transferencias", transferenciaServicio.darTransferenciasSerializable(Integer.parseInt(id)));
+        }
+
+
+        return "transferenciaSe";
+    }
+
+    @Transactional
+    @GetMapping("/transferencias/iso/rc")
+    public String listarTransferenciasRc(Model model, String id) throws NumberFormatException, InterruptedException {
+    
+        List<Transferencia>  transferencias= transferenciaRepository.findAll();
+
+        if(id == null || id == "" ){
+            model.addAttribute("transferencias", transferencias);
+        }
+        else{
+            model.addAttribute("transferencias", transferenciaServicio.darTransferenciaRC(Integer.parseInt(id)));
+        }
+
+
+        return "transferenciaRc";
+    }
+
 
     @Transactional
     @PostMapping("/transferencia/new/save")
