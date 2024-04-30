@@ -83,8 +83,17 @@ public class PrestamoController {
 
     @GetMapping("/prestamos/cerrar/{id}")
     public String cerrarPrestamo( @PathVariable("id") Integer id){
-        prestamoRepository.cerrarPrestamo(id);
-        return "redirect:/prestamos";   
+        Prestamo prestamo = prestamoRepository.findById(id).orElse(null);
+
+        if (prestamo.getMonto() == 0.0){
+            prestamoRepository.cerrarPrestamo(id);
+
+            return "redirect:/prestamos"; 
+        }
+
+        else{
+            return "error";
+        }
     }
     @GetMapping("/prestamos/{id}/delete")
     public String eliminarPrestamo(@PathVariable("id") Integer id) {
