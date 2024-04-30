@@ -42,6 +42,16 @@ public class ClienteController {
         return "clienteNuevo";
     }
 
+    @GetMapping("/clientes/menu")
+    public String clientesMenu(){
+        return("clientesMenu");
+    }
+
+    @GetMapping("/empleados/menu")
+    public String EmpleadosMenu(){
+        return("empleadosMenu");
+    }
+
     @PostMapping("/clientes/new/save")
     public String clienteGuardar(@ModelAttribute Cliente cliente) {
         clienteRepository.save(cliente);
