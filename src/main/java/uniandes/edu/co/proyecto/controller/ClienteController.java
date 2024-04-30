@@ -81,5 +81,26 @@ public class ClienteController {
         clienteRepository.deleteById(id);
         return "redirect:/clientes";
     }
+
+    @GetMapping("/clientes/login")
+    public String empleadosLogin() {
+        
+        return "loginCliente";
+                                }
+
+    @GetMapping("/clientes/login/check")
+    public String clientesLoginCheck(@RequestParam(required = false) String login, @RequestParam(required = false) String clave) {
+        String claveConfirmacion = clienteRepository.darClave(login);
+        System.out.println(clave);
+
+        if (clave != null && claveConfirmacion.equals(clave)) {
+
+            return "redirect:/clientes/menu";
+        } else {
+            return "redirect:/clientes/login";
+                                
+        
+        }
+    }
  
 }

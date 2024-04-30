@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import uniandes.edu.co.proyecto.modelo.Cuenta;
-import uniandes.edu.co.proyecto.modelo.Obc;
 import uniandes.edu.co.proyecto.modelo.Obp;
 import uniandes.edu.co.proyecto.modelo.Prestamo;
 import uniandes.edu.co.proyecto.repositorio.ObpRepository;

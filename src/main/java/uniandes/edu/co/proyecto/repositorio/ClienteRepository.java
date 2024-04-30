@@ -17,6 +17,9 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
     @Query(value = "SELECT * FROM clientes WHERE id = :id", nativeQuery = true)
     Cliente darCliente(@Param("id") int id);
 
+    @Query(value = "SELECT CLAVE FROM clientes WHERE login = :login", nativeQuery = true)
+    String darClave(@Param("login") String login);
+
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO clientes (id, num_doc, tipo_doc, nombre, dir, mail, tel, ciudad, clave, login, nacionalidad, dept, codigo_post, tipo, estado) VALUES ( parranderos_sequence.nextval , :num_doc, :tipo_doc, :nombre, :dir, :mail, :tel, :ciudad, :clave, :login, :nacionalidad, :dept, :codigo_post, :tipo, :estado)", nativeQuery = true)

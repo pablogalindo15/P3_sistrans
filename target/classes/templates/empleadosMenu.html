@@ -4,27 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BancAndes</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 800px; 
+            background: #ffffff; 
+            padding: 2rem;
+            margin-top: 3rem; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+            border-radius: 0.5rem; 
+        }
+        .btn-custom {
+            background-color: #0056b3; 
+            color: white;
+            border: none; 
+            margin: 0.5rem; 
+            width: 45%; 
+            transition: 
+        }
+        .btn-custom:hover {
+            background-color: #004494; 
+        }
+        .brand-logo {
+            width: 200px; 
+            height: auto; 
+            margin-bottom: 
+        }
+    </style>
 </head>
 <body>
-    <div class="container mx-auto w-50"> <!-- Ajustado el ancho para mejor visualización -->
-        <h1 class="text-center my-3">BancAndes</h1> <!-- Agregado centrado y margen -->
-        <img th:src="@{/images/logo.png}" class="d-block mx-auto" width="250" alt="BancAndes Logo"/> <!-- Centrado de imagen -->
+    <div class="container text-center">
+        <h1 class="mb-4">Welcome to BancAndes Empleados</h1>
+        <img th:src="@{/images/logo.png}" class="brand-logo" alt="BancAndes Logo">
 
-        <!-- Navegación Principal -->
-        <div class="d-flex flex-wrap justify-content-center"> <!-- Flexbox para mejor disposición de los botones -->
-            <a th:href="@{/clientes}" class="btn btn-primary m-2">Clientes</a>
-            <a th:href="@{/cuentas}" class="btn btn-primary m-2">Cuentas</a>
-            <a th:href="@{/pas}" class="btn btn-primary m-2">Puntos de Atención</a>
-            <a th:href="@{/obcs}" class="btn btn-primary m-2">Operaciones Bancarias</a>
-            <a th:href="@{/empleados}" class="btn btn-primary m-2">Empleados</a>
-            <a th:href="@{/transferencias}" class="btn btn-primary m-2">Transferencias</a>
-            <a th:href="@{/prestamos}" class="btn btn-primary m-2">Préstamos</a>
-            <a th:href="@{/oficinas}" class="btn btn-primary m-2">Oficinas</a>
-            <a th:href="@{/obps}" class="btn btn-primary m-2">Operaciones Préstamos</a>
-            <!-- Asegúrate de que estos enlaces llevan a destinos únicos -->
-            <a th:href="@{/obcs/iso}" class="btn btn-primary m-2">Operaciones Cuenta ISO</a>
-            <a th:href="@{/obcs/iso/rc}" class="btn btn-primary m-2">Rec. Cuenta ISO</a>
+
+        <div class="d-flex flex-wrap justify-content-around align-items-center">
+            <a th:href="@{/clientes}" class="btn btn-custom">Clientes</a>
+            <a th:href="@{/cuentas}" class="btn btn-custom">Cuentas</a>
+            <a th:href="@{/pas}" class="btn btn-custom">Puntos de Atención</a>
+            <a th:href="@{/obcs}" class="btn btn-custom">Operaciones Bancarias</a>
+            <a th:href="@{/empleados}" class="btn btn-custom">Empleados</a>
+            <a th:href="@{/transferencias}" class="btn btn-custom">Transferencias</a>
+            <a th:href="@{/prestamos}" class="btn btn-custom">Préstamos</a>
+            <a th:href="@{/oficinas}" class="btn btn-custom">Oficinas</a>
+            <a th:href="@{/obps}" class="btn btn-custom">Operaciones Préstamos</a>
+            <a th:href="@{/obcs/iso}" class="btn btn-custom">Operaciones Cuenta ISO</a>
+            <a th:href="@{/obcs/iso/rc}" class="btn btn-custom">Rec. Cuenta ISO</a>
         </div>
     </div>
 </body>

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import uniandes.edu.co.proyecto.modelo.Empleado;
 import uniandes.edu.co.proyecto.modelo.Oficina;
 import uniandes.edu.co.proyecto.repositorio.EmpleadoRepository;
@@ -75,4 +77,30 @@ public class EmpleadoController {
         empleadoRepository.deleteById(id);
         return "redirect:/empleados";
     }
+
+    @GetMapping("/empleados/login")
+    public String empleadosLogin() {
+        
+        return "loginEmpleado";
+                                }
+
+    @GetMapping("/empleados/login/check")
+    public String empleadosLoginCheck(@RequestParam(required = false) String login, @RequestParam(required = false) String clave) {
+        String claveConfirmacion = empleadoRepository.darClave(login);
+        System.out.println(clave);
+
+        if (clave != null && claveConfirmacion.equals(clave)) {
+
+            return "redirect:/empleados/menu";
+        } else {
+            return "redirect:/empleados/login";
+                                
+        
+        }
+    }
+
 }
+
+
+
+

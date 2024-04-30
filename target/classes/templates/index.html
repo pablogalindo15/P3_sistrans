@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOG IN BancAndes</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mx-auto w-50"> <!-- Ajustado el ancho para mejor visualización -->
-        <h1 class="text-center my-3">LOG IN BancAndes</h1> <!-- Agregado centrado y margen -->
-        <img th:src="@{/images/logo.png}" class="d-block mx-auto" width="250" alt="BancAndes Logo"/> <!-- Centrado de imagen -->
+    <div class="container my-5 p-5 shadow-lg p-3 mb-5 bg-white rounded"> <!-- Main container with padding, margin, and shadow for depth -->
+        <h1 class="text-center mb-4">LOG IN BancAndes</h1> <!-- Main heading -->
+        <div class="row justify-content-center mb-4">
+            <img th:src="@{/images/logo.png}"  alt="BancAndes Logo"/> <!-- Placeholder for logo, rounded -->
+        </div>
 
-        <!-- Navegación Principal -->
-        <div class="d-flex flex-wrap justify-content-center"> <!-- Flexbox para mejor disposición de los botones -->
-            <a th:href="@{/clientes/menu}" class="btn btn-secondary">Clientes</a>
-            <div></div>
-            <br>
-            <a th:href="@{/empleados/menu}" class="btn btn-secondary">Empleados</a>
+        <!-- Main Navigation -->
+        <div class="d-flex flex-column align-items-center"> <!-- Changed to column layout for better mobile presentation -->
+            <a th:href="@{/clientes/login}"  class="btn btn-success btn-lg mb-3 w-50">Clientes</a> <!-- Larger, wider button for clients -->
+            <a th:href="@{/empleados/login}" class="btn btn-success btn-lg w-50">Empleados</a> <!-- Larger, wider button for employees -->
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -18,6 +18,9 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
     @Query(value = "SELECT * FROM empleados WHERE id = :id", nativeQuery = true)
     Empleado darEmpleado(@Param("id") long id);
 
+    @Query(value = "SELECT CLAVE FROM empleados WHERE login = :login", nativeQuery = true)
+    String darClave(@Param("login") String login);
+
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM empleados WHERE id = :id", nativeQuery = true)
