@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BacAndesApplication",
+            "request": "launch",
+            "mainClass": "proyecto3.BacAndes.BacAndesApplication",
+            "projectName": "proyecto"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ProyectoApplication<proyecto>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
