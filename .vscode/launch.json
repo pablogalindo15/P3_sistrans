@@ -16,6 +16,16 @@
             "projectName": "proyecto",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BacAndesApplication<BacAndes>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "proyecto3.BacAndes.BacAndesApplication",
+            "projectName": "BacAndes",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Clientes</h1>
+        
+        <!-- Formulario de Búsqueda -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Búsqueda avanzada
+            </div>
+            <div class="card-body">
+                <form th:action="@{/clientes}" method="get">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="id">ID de Cliente:</label>
+                                <select class="form-control" name="id" id="id">
+                                    <option value="">Seleccione un ID</option>
+                                    <option th:each="cliente : ${clientes}" th:value="${cliente._id}" th:text="${cliente._id} + ' - ' + ${cliente.nombre}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Tabla de Clientes -->
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Login</th>
+                    <th>Tipo de Cliente</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente._id}"></td>
+                    <td th:text="${cliente.login}"></td>
+                    <td th:text="${cliente.tipo}"></td>
+                    <td th:text="${cliente.estado}"></td>
+                    <td>
+                        <a th:href="@{/clientes/{id}/edit(id=${cliente._id})}" class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                        <a th:href="@{/clientes/{id}/delete(id=${cliente._id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de borrar este cliente?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        </div>
+        
+    </div>
+</body>
+</html>

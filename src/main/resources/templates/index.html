@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BancAndes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container mx-auto w-50"> <!-- Ajustado el ancho para mejor visualización -->
+        <h1 class="text-center my-3">BancAndes</h1> <!-- Agregado centrado y margen -->
+        <img th:src="@{/images/logo.png}" class="d-block mx-auto" width="250" alt="BancAndes Logo"/> <!-- Centrado de imagen -->
+
+        <!-- Navegación Principal -->
+        <div class="d-flex flex-wrap justify-content-center"> <!-- Flexbox para mejor disposición de los botones -->
+            <a th:href="@{/clientes}" class="btn btn-primary m-2">Clientes</a>
+        </div>
+    </div>
+</body>
+</html>
