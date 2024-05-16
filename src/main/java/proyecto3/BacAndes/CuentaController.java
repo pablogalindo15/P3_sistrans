@@ -13,6 +13,9 @@ public class CuentaController {
     @Autowired
     private CuentaService cuentaService;
 
+    @Autowired
+    private ClienteService clienteService;
+
     @GetMapping
     public ModelAndView listarCuentas() {
         List<Cuenta> cuentas = cuentaService.allCuentas();
@@ -21,7 +24,8 @@ public class CuentaController {
 
     @GetMapping("/nuevo")
     public ModelAndView mostrarFormularioNuevaCuenta() {
-        return new ModelAndView("cuentaNueva").addObject("cuenta", new Cuenta());
+        List<Cliente> clientes = clienteService.allClientes();
+        return new ModelAndView("cuentaNueva").addObject("cuenta", new Cuenta()).addObject("clientes", clientes);
     }
 
     @PostMapping("/new/save")

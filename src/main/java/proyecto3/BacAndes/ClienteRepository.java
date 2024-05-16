@@ -1,9 +1,9 @@
 package proyecto3.BacAndes;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
 @Repository
-public interface ClienteRepository extends MongoRepository<Cliente,ObjectId>{
-    
+public interface ClienteRepository extends MongoRepository<Cliente, ObjectId> {
 }
