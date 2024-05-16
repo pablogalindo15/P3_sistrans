@@ -26,8 +26,9 @@ public class ClienteController {
     }
 
     @PostMapping("/new/save")
-    public String crearCliente(@ModelAttribute Cliente cliente) {
+    public ModelAndView crearCliente(@ModelAttribute Cliente cliente) {
         clienteService.saveCliente(cliente);
-        return "redirect:/clientes";
+        List<Cliente> clientes = clienteService.allClientes();
+        return new ModelAndView("clientes").addObject("clientes", clientes);
     }
 }
