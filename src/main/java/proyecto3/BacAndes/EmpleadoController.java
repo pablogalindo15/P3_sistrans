@@ -21,7 +21,8 @@ public class EmpleadoController {
 
     @GetMapping("/nuevo")
     public ModelAndView mostrarFormularioNuevoEmpleado() {
-        return new ModelAndView("empleadoNuevo").addObject("empleado", new Empleado());
+        List<Oficina> oficinas = empleadoService.allOficinas();
+        return new ModelAndView("empleadoNuevo").addObject("empleado", new Empleado()).addObject("oficinas", oficinas);
     }
 
     @PostMapping("/new/save")

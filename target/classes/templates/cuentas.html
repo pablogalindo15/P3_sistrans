@@ -16,9 +16,8 @@
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
-                    <th>Tipo</th>
                     <th>Numero</th>
+                    <th>Tipo</th>
                     <th>Saldo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
@@ -28,7 +27,6 @@
                 <tr th:each="cuenta : ${cuentas}">
                     <td th:text="${cuenta._id}"></td>
                     <td th:text="${cuenta.tipo}"></td>
-                    <td th:text="${cuenta.numero}"></td>
                     <td th:text="${cuenta.saldo}"></td>
                     <td th:text="${cuenta.estado}"></td>
                     <td>

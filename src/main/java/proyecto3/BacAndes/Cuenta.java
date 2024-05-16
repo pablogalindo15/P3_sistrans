@@ -17,7 +17,6 @@ public class Cuenta {
     @Id
     private ObjectId _id;
     private String tipo;
-    private String numero;
     private int saldo;
     private String estado;
     private ObjectId id_cliente;

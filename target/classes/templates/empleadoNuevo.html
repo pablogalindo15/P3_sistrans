@@ -79,8 +79,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="id_oficina">ID de Oficina</label>
-                <input type="text" class="form-control" id="id_oficina" name="id_oficina" required>
+                <label for="id_oficina">Oficina</label>
+                <select class="form-control" id="id_oficina" name="id_oficina" required>
+                    <option th:each="oficina : ${oficinas}" th:value="${oficina._id}" th:text="${oficina.nombre}"></option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
             <a th:href="@{/empleados}" class="btn btn-secondary">Cancelar</a>
