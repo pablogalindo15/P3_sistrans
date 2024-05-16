@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
+
 @Document(collection="cuentas")
 @Data
 @AllArgsConstructor
@@ -20,5 +23,7 @@ public class Cuenta {
     private int saldo;
     private String estado;
     private ObjectId id_cliente;
+    private Date fecha_ultima_transaccion; 
+
     
 }
