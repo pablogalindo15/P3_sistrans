@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Oficinas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Oficinas</h1>
+        <a th:href="@{/oficinas/nuevo}" class="btn btn-primary mb-3">Nueva Oficina</a>
+        
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Número de Puntos Atencion</th>
+                    <th>ID Gerente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="oficina : ${oficinas}">
+                    <td th:text="${oficina._id}"></td>
+                    <td th:text="${oficina.nombre}"></td>
+                    <td th:text="${oficina.dir}"></td>
+                    <td th:text="${oficina.num_pa}"></td>
+                    <td th:text="${oficina.id_gerente}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        </div>
+    </div>
+</body>
+</html>

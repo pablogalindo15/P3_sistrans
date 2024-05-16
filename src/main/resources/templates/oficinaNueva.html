@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Oficina</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Crear Nueva Oficina</h1>
+        <form th:action="@{/oficinas/new/save}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="dir">Dirección</label>
+                <input type="text" class="form-control" id="dir" name="dir" required>
+            </div>
+            <div class="form-group">
+                <label for="num_pa">Número de PA</label>
+                <input type="number" class="form-control" id="num_pa" name="num_pa" required>
+            </div>
+            <div class="form-group">
+                <label for="id_gerente">ID del Gerente</label>
+                <select class="form-control" id="id_gerente" name="id_gerente" required>
+                    <option value="">Seleccione un gerente</option>
+                    <option th:each="gerente : ${gerentes}" th:value="${gerente._id}" th:text="${gerente.nombre}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Oficina</button>
+            <a th:href="@{/oficinas}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

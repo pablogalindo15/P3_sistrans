@@ -15,6 +15,10 @@ public class EmpleadoService {
         return empleadoRepository.findAll();
     }
 
+    public List<Empleado> allGerentesDeOficina() {
+        return empleadoRepository.findByCargo("gerente de oficina");
+    }
+
     public void saveEmpleado(Empleado empleado) {
         empleadoRepository.save(empleado);
     }
