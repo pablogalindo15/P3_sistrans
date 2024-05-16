@@ -11,31 +11,8 @@
 <body>
     <div class="container mt-4">
         <h1>Lista de Clientes</h1>
+        <a th:href="@{/clientes/nuevo}" class="btn btn-primary mb-3">Nuevo Cliente</a>
         
-        <!-- Formulario de Búsqueda -->
-        <div class="card mb-4">
-            <div class="card-header">
-                Búsqueda avanzada
-            </div>
-            <div class="card-body">
-                <form th:action="@{/clientes}" method="get">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="id">ID de Cliente:</label>
-                                <select class="form-control" name="id" id="id">
-                                    <option value="">Seleccione un ID</option>
-                                    <option th:each="cliente : ${clientes}" th:value="${cliente._id}" th:text="${cliente._id} + ' - ' + ${cliente.nombre}"></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Tabla de Clientes -->
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -66,7 +43,6 @@
         <div>
             <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
         </div>
-        
     </div>
 </body>
 </html>

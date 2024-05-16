@@ -9,15 +9,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
+
     @Autowired
     private ClienteRepository clienteRepository;
-    public List<Cliente> allClientes(){
-        return clienteRepository.findAll();
 
+    public List<Cliente> allClientes() {
+        return clienteRepository.findAll();
     }
 
-    public Optional<Cliente> singleCliente(ObjectId id){
+    public Optional<Cliente> singleCliente(ObjectId id) {
         return clienteRepository.findById(id);
     }
-    
+
+    public void saveCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
+    }
+
+    public void deleteCliente(ObjectId id) {
+        clienteRepository.deleteById(id);
+    }
 }

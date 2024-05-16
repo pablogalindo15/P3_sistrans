@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Cliente {
     @Id
     private ObjectId _id;
-    private int num_doc;
+    private String num_doc;
     private String tipo_doc;
     private String nombre;
     private String dir;
