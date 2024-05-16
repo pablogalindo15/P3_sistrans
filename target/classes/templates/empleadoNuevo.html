@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Empleado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Agregar nuevo empleado</h1>
+        <form th:action="@{/empleados/new/save}" method="post">
+            <div class="form-group">
+                <label for="num_doc">Número de Documento</label>
+                <input type="text" class="form-control" id="num_doc" name="num_doc" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_doc">Tipo de Documento</label>
+                <input type="text" class="form-control" id="tipo_doc" name="tipo_doc" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="dir">Dirección</label>
+                <input type="text" class="form-control" id="dir" name="dir" required>
+            </div>
+            <div class="form-group">
+                <label for="mail">Correo Electrónico</label>
+                <input type="email" class="form-control" id="mail" name="mail" required>
+            </div>
+            <div class="form-group">
+                <label for="tel">Teléfono</label>
+                <input type="text" class="form-control" id="tel" name="tel" required>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+            </div>
+            <div class="form-group">
+                <label for="clave">Clave</label>
+                <input type="password" class="form-control" id="clave" name="clave" required>
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" name="login" required>
+            </div>
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" required>
+            </div>
+            <div class="form-group">
+                <label for="dept">Departamento</label>
+                <input type="text" class="form-control" id="dept" name="dept" required>
+            </div>
+            <div class="form-group">
+                <label for="codigo_post">Código Postal</label>
+                <input type="text" class="form-control" id="codigo_post" name="codigo_post" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select class="form-control" id="tipo" name="tipo" required>
+                    <option value="natural">Natural</option>
+                    <option value="juridica">Jurídica</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control" id="estado" name="estado" required>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo</label>
+                <select class="form-control" id="cargo" name="cargo" required>
+                    <option value="gerente general">Gerente General</option>
+                    <option value="gerente de oficina">Gerente de Oficina</option>
+                    <option value="cajero">Cajero</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_oficina">ID de Oficina</label>
+                <input type="text" class="form-control" id="id_oficina" name="id_oficina" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a th:href="@{/empleados}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
