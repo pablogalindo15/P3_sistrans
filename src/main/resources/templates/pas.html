@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Pas</h1>
+        <a th:href="@{/pas/nuevo}" class="btn btn-primary mb-3">Nuevo Punto de Atención</a>
+        
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>ID Oficina</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pas : ${pas}">
+                    <td th:text="${pas._id}"></td>
+                    <td th:text="${pas.tipo}"></td>
+                    <td th:text="${pas.id_oficina}"></td>
+                    <td>
+                        <a th:href="@{/pas/{id}/edit(id=${pas._id})}" class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                        <a th:href="@{/pas/{id}/delete(id=${pas._id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de borrar este pas?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        </div>
+    </div>
+</body>
+</html>

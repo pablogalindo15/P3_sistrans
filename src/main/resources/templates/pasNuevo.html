@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Punto de Atención</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Agregar nuevo Punto de Atención</h1>
+        <form th:action="@{/pas/new/save}" method="post">
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select class="form-control" id="tipo" name="tipo" required>
+                    <option value="fisico">Físico</option>
+                    <option value="cajero">Cajero</option>
+                    <option value="digital">Digital</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_oficina">Oficina</label>
+                <select class="form-control" id="id_oficina" name="id_oficina" required>
+                    <option th:each="oficina : ${oficinas}" th:value="${oficina._id}" th:text="${oficina.nombre}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a th:href="@{/pas}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
+
+
