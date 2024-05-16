@@ -1,5 +1,6 @@
 package proyecto3.BacAndes;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,9 @@ public class PasService {
 
     public void savePas(Pas pas) {
         pasRepository.save(pas);
+    }
+
+    public void deletePas(ObjectId id) {
+        pasRepository.deleteById(id);
     }
 }

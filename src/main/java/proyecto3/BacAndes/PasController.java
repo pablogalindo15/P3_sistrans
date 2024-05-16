@@ -1,5 +1,6 @@
 package proyecto3.BacAndes;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,5 +31,11 @@ public class PasController {
         pasService.savePas(pas);
         List<Pas> pasList = pasService.allPas();
         return new ModelAndView("pas").addObject("pas", pasList);
+    }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView deletePas(@PathVariable("id") ObjectId id) {
+        pasService.deletePas(id);
+        return new ModelAndView("redirect:/pas");
     }
 }
