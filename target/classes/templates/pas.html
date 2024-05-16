@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1>Lista de Pas</h1>
+        <h1>Lista de Puntos de Atencion</h1>
         <a th:href="@{/pas/nuevo}" class="btn btn-primary mb-3">Nuevo Punto de Atención</a>
         
         <table class="table table-bordered table-hover">
@@ -28,7 +28,7 @@
                     <td th:text="${pas.tipo}"></td>
                     <td th:text="${pas.id_oficina}"></td>
                     <td>
-                        <a th:href="@{/pas/delete/{id}(id=${pas._id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de borrar este Pas?')">
+                        <a th:href="@{/pas/delete/{id}(id=${pas._id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de borrar este Punto de Atencion?')">
                             Borrar
                         </a>
                     </td>
