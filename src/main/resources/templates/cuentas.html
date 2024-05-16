@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cuentas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Cuentas</h1>
+        <a th:href="@{/cuentas/nuevo}" class="btn btn-primary mb-3">Nueva Cuenta</a>
+        
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Numero</th>
+                    <th>Saldo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cuenta : ${cuentas}">
+                    <td th:text="${cuenta._id}"></td>
+                    <td th:text="${cuenta.tipo}"></td>
+                    <td th:text="${cuenta.numero}"></td>
+                    <td th:text="${cuenta.saldo}"></td>
+                    <td th:text="${cuenta.estado}"></td>
+                    <td>
+                        <a th:href="@{/cuentas/{id}/edit(id=${cuenta._id})}" class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                        <a th:href="@{/cuentas/{id}/delete(id=${cuenta._id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de borrar esta cuenta?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        </div>
+    </div>
+</body>
+</html>
