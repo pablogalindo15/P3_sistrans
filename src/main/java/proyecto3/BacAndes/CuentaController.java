@@ -1,5 +1,6 @@
 package proyecto3.BacAndes;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,5 +34,17 @@ public class CuentaController {
         cuentaService.saveCuenta(cuenta);
         List<Cuenta> cuentas = cuentaService.allCuentas();
         return new ModelAndView("cuentas").addObject("cuentas", cuentas);
+    }
+
+    @GetMapping("/desactivar/{id}")
+    public ModelAndView desactivarCuenta(@PathVariable("id") ObjectId id) {
+        cuentaService.desactivarCuenta(id);
+        return new ModelAndView("redirect:/cuentas");
+    }
+
+    @GetMapping("/cerrar/{id}")
+    public ModelAndView cerrarCuenta(@PathVariable("id") ObjectId id) {
+        cuentaService.cerrarCuenta(id);
+        return new ModelAndView("redirect:/cuentas");
     }
 }

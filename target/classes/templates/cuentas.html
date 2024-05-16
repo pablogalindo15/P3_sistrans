@@ -31,14 +31,12 @@
                     <td th:text="${cuenta.saldo}"></td>
                     <td th:text="${cuenta.estado}"></td>
                     <td th:text="${#dates.format(cuenta.fecha_ultima_transaccion, 'dd/MM/yyyy')}"></td>
-
-
                     <td>
-                        <a th:href="@{/cuentas/{id}/edit(id=${cuenta._id})}" class="btn btn-warning btn-sm">
-                            Editar
+                        <a th:href="@{/cuentas/desactivar/{id}(id=${cuenta._id})}" class="btn btn-warning btn-sm" th:if="${cuenta.estado == 'activa'}">
+                            Desactivar
                         </a>
-                        <a th:href="@{/cuentas/{id}/delete(id=${cuenta._id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de borrar esta cuenta?')">
-                            Borrar
+                        <a th:href="@{/cuentas/cerrar/{id}(id=${cuenta._id})}" class="btn btn-danger btn-sm" th:if="${cuenta.estado == 'activa' and cuenta.saldo == 0}">
+                            Cerrar
                         </a>
                     </td>
                 </tr>
