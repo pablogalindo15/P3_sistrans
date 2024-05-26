@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "6642cadc5377339b53c122fc"
+  },
+  "tipo": "fisico",
+  "id_oficina": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  }
+},
+{
+  "_id": {
+    "$oid": "66460b3832ef491d9433c996"
+  },
+  "tipo": "cajero",
+  "id_oficina": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  },
+  "_class": "proyecto3.BacAndes.Pas"
+},
+{
+  "_id": {
+    "$oid": "66460c3b7d3524314c8e834d"
+  },
+  "tipo": "cajero",
+  "id_oficina": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  },
+  "_class": "proyecto3.BacAndes.Pas"
+}]

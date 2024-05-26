@@ -1,0 +1,119 @@
+[{
+  "_id": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "num_doc": "123456789",
+  "tipo_doc": "CC",
+  "nombre": "Juliana Duran",
+  "dir": "Calle 1",
+  "mail": "juliana@gmail.com",
+  "tel": "123456789",
+  "ciudad": "Bogota",
+  "clave": "password",
+  "login": "j.duranl",
+  "nacionalidad": "Colombiana",
+  "dept": "Cundinamarca",
+  "codigo_post": "1101",
+  "tipo": "natural",
+  "estado": "activo"
+},
+{
+  "_id": {
+    "$oid": "664550ee8621946fe0f90ff1"
+  },
+  "num_doc": "100076182",
+  "tipo_doc": "CC",
+  "nombre": "Leo Messi",
+  "dir": "Universidad de los Andes",
+  "mail": "leomessi@uniandes.edu.co",
+  "tel": "12348",
+  "ciudad": "Miami",
+  "clave": "leomessi",
+  "login": "leomessi",
+  "nacionalidad": "Argentino",
+  "dept": "Florida",
+  "codigo_post": "110121",
+  "tipo": "natural",
+  "estado": "activo",
+  "_class": "proyecto3.BacAndes.Cliente"
+},
+{
+  "_id": {
+    "$oid": "66455283212f8223135def9d"
+  },
+  "num_doc": "189082",
+  "tipo_doc": "CC",
+  "nombre": "Pablo Galindo",
+  "dir": "Universidad de los Andes",
+  "mail": "p.galindo@uniandes.edu.co",
+  "tel": "890897",
+  "ciudad": "Bogota",
+  "clave": "pablo123",
+  "login": "p.galindo",
+  "nacionalidad": "Colombiano",
+  "dept": "Bogota D.C.",
+  "codigo_post": "110121",
+  "tipo": "juridica",
+  "estado": "activo",
+  "_class": "proyecto3.BacAndes.Cliente"
+},
+{
+  "_id": {
+    "$oid": "664554cb7bf8cf0dd440ed22"
+  },
+  "num_doc": "890887",
+  "tipo_doc": "CC",
+  "nombre": "Rory McIlroy",
+  "dir": "Miami 4892",
+  "mail": "rors@pga.com",
+  "tel": "389087",
+  "ciudad": "London",
+  "clave": "rors123",
+  "login": "rory24",
+  "nacionalidad": "Northern Ireland",
+  "dept": "Florida",
+  "codigo_post": "890897",
+  "tipo": "natural",
+  "estado": "activo",
+  "_class": "proyecto3.BacAndes.Cliente"
+},
+{
+  "_id": {
+    "$oid": "664559107d8095365830cfd8"
+  },
+  "num_doc": "289083",
+  "tipo_doc": "CC",
+  "nombre": "Tiger Woods",
+  "dir": "Miami 4892",
+  "mail": "twood@pga.com",
+  "tel": "28908",
+  "ciudad": "Bogota",
+  "clave": "89089",
+  "login": "hjkh",
+  "nacionalidad": "Colombiano",
+  "dept": "Florida",
+  "codigo_post": "110121",
+  "tipo": "natural",
+  "estado": "activo",
+  "_class": "proyecto3.BacAndes.Cliente"
+},
+{
+  "_id": {
+    "$oid": "664559bbb55ba94bf9b1a804"
+  },
+  "num_doc": "9038908",
+  "tipo_doc": "CC",
+  "nombre": "Juan",
+  "dir": "Universidad de los Andes",
+  "mail": "rors@pga.com",
+  "tel": "389087",
+  "ciudad": "Bogota",
+  "clave": "298089",
+  "login": "juan",
+  "nacionalidad": "Colombiano",
+  "dept": "Bogota D.C.",
+  "codigo_post": "890897",
+  "tipo": "natural",
+  "estado": "activo",
+  "_class": "proyecto3.BacAndes.Cliente"
+}]

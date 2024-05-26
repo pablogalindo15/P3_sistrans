@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  },
+  "nombre": "Oficina Principal",
+  "dir": "Calle Principal 123",
+  "num_pa": 1,
+  "id_gerente": {
+    "$oid": "6642cb405377339b53c12308"
+  }
+},
+{
+  "_id": {
+    "$oid": "66456eb9efbfbb3e3765819d"
+  },
+  "nombre": "Oficina Andes",
+  "dir": "Universidad de los Andes",
+  "num_pa": 5,
+  "id_gerente": {
+    "$oid": "66456dd14d4b661314a5e239"
+  },
+  "_class": "proyecto3.BacAndes.Oficina"
+},
+{
+  "_id": {
+    "$oid": "66461d00fc75cb27f344c8c8"
+  },
+  "nombre": "Oficina 1",
+  "dir": "Universidad de los Andes",
+  "num_pa": 89,
+  "id_gerente": {
+    "$oid": "6645f77cfdde8360b7d0a1eb"
+  },
+  "_class": "proyecto3.BacAndes.Oficina"
+}]

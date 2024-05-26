@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "6642c9955377339b53c122e9"
+  },
+  "tipo": "ahorros",
+  "saldo": 5000,
+  "estado": "desactivada",
+  "id_cliente": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "fecha_ultima_transaccion": {
+    "$date": "2024-05-16T12:17:13.301Z"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+},
+{
+  "_id": {
+    "$oid": "66457e05d8256d2dacc7a9e8"
+  },
+  "tipo": "ahorros",
+  "saldo": 10000,
+  "estado": "activa",
+  "id_cliente": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta",
+  "fecha_ultima_transaccion": {
+    "$date": "2024-05-16T12:17:13.301Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6645f88ef8050778b05f8964"
+  },
+  "tipo": "ahorros",
+  "saldo": 100098,
+  "estado": "activa",
+  "id_cliente": {
+    "$oid": "664550ee8621946fe0f90ff1"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta",
+  "fecha_ultima_transaccion": {
+    "$date": "2024-05-16T12:17:13.301Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6645fadfdbdf557523d39762"
+  },
+  "tipo": "ahorros",
+  "saldo": 9,
+  "estado": "desactivada",
+  "id_cliente": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+},
+{
+  "_id": {
+    "$oid": "6645fee4421d15380127c493"
+  },
+  "tipo": "ahorros",
+  "saldo": 0,
+  "estado": "cerrada",
+  "id_cliente": {
+    "$oid": "664559bbb55ba94bf9b1a804"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+},
+{
+  "_id": {
+    "$oid": "66461d12fc75cb27f344c8c9"
+  },
+  "tipo": "AFC",
+  "saldo": 10000,
+  "estado": "desactivada",
+  "id_cliente": {
+    "$oid": "664550ee8621946fe0f90ff1"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+},
+{
+  "_id": {
+    "$oid": "66461d1efc75cb27f344c8ca"
+  },
+  "tipo": "ahorros",
+  "saldo": 0,
+  "estado": "cerrada",
+  "id_cliente": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+},
+{
+  "_id": {
+    "$oid": "66511b9705d1617b3b669de9"
+  },
+  "tipo": "ahorros",
+  "saldo": 1000,
+  "estado": "activa",
+  "id_cliente": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+},
+{
+  "_id": {
+    "$oid": "66511ba205d1617b3b669dea"
+  },
+  "tipo": "ahorros",
+  "saldo": 7777777,
+  "estado": "activa",
+  "id_cliente": {
+    "$oid": "6642c6365377339b53c122d8"
+  },
+  "_class": "proyecto3.BacAndes.Cuenta"
+}]

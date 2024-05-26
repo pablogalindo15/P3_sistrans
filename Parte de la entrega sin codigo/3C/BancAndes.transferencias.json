@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "6653ade0f1fab1f31c058e9d"
+  },
+  "fecha": {
+    "$date": "2024-05-26T12:00:00.000Z"
+  },
+  "valor": 1000,
+  "tipo": "transferencia",
+  "id_cuenta_1": {
+    "$oid": "6642c9955377339b53c122e9"
+  },
+  "id_cuenta_2": {
+    "$oid": "66457e05d8256d2dacc7a9e8"
+  }
+}]

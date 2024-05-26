@@ -1,0 +1,95 @@
+[{
+  "_id": {
+    "$oid": "6642cb405377339b53c12308"
+  },
+  "num_doc": "123456799",
+  "tipo_doc": "CC",
+  "nombre": "Gabriel Padilla",
+  "dir": "Carrera 10 #20-30",
+  "mail": "gabriel@gmail.com",
+  "tel": "123456789",
+  "ciudad": "Bogotá",
+  "clave": "password",
+  "login": "g.padilla",
+  "nacionalidad": "Colombiano",
+  "dept": "Cundinamarca",
+  "codigo_post": "1101",
+  "tipo": "natural",
+  "estado": "activo",
+  "cargo": "gerente general",
+  "id_oficina": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  }
+},
+{
+  "_id": {
+    "$oid": "664563a4af77335ec212ccfa"
+  },
+  "num_doc": "189082",
+  "tipo_doc": "CC",
+  "nombre": "Shai Gilgeous Alexander",
+  "dir": "Miami 4892",
+  "mail": "sga@nba.com",
+  "tel": "28908",
+  "ciudad": "OKC",
+  "clave": "56756",
+  "login": "sga",
+  "nacionalidad": "Canadiense",
+  "dept": "Florida",
+  "codigo_post": "110121",
+  "tipo": "natural",
+  "estado": "activo",
+  "cargo": "gerente general",
+  "id_oficina": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  },
+  "_class": "proyecto3.BacAndes.Empleado"
+},
+{
+  "_id": {
+    "$oid": "66456dd14d4b661314a5e239"
+  },
+  "num_doc": "778908",
+  "tipo_doc": "CC",
+  "nombre": "Luka Doncic",
+  "dir": "Dallas 29089",
+  "mail": "lukadon@nba.com",
+  "tel": "778979",
+  "ciudad": "Dallas",
+  "clave": "77",
+  "login": "luka",
+  "nacionalidad": "Slovenian",
+  "dept": "Florida",
+  "codigo_post": "110121",
+  "tipo": "natural",
+  "estado": "activo",
+  "cargo": "gerente de oficina",
+  "id_oficina": {
+    "$oid": "6642ca4f5377339b53c122f4"
+  },
+  "_class": "proyecto3.BacAndes.Empleado"
+},
+{
+  "_id": {
+    "$oid": "6645f77cfdde8360b7d0a1eb"
+  },
+  "num_doc": "2890891",
+  "tipo_doc": "CC",
+  "nombre": "Dorlan Pabon",
+  "dir": "Universidad de los Andes",
+  "mail": "dpab@gmail.com",
+  "tel": "8907897",
+  "ciudad": "Medellin",
+  "clave": "89078",
+  "login": "dpabon",
+  "nacionalidad": "Colombiano",
+  "dept": "Bogota D.C.",
+  "codigo_post": "989080",
+  "tipo": "natural",
+  "estado": "activo",
+  "cargo": "gerente de oficina",
+  "id_oficina": {
+    "$oid": "66456eb9efbfbb3e3765819d"
+  },
+  "_class": "proyecto3.BacAndes.Empleado"
+}]

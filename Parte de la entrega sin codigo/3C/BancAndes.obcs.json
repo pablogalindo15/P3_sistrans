@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "66513c5d49ad0f07a8cb0053"
+  },
+  "fecha": {
+    "$date": "2023-05-02T00:00:00.000Z"
+  },
+  "valor": 500,
+  "tipo": "consignacion",
+  "id_cuenta": {
+    "$oid": "66457e05d8256d2dacc7a9e8"
+  }
+},
+{
+  "_id": {
+    "$oid": "66513c5d49ad0f07a8cb0052"
+  },
+  "fecha": {
+    "$date": "2023-05-01T00:00:00.000Z"
+  },
+  "valor": 1000,
+  "tipo": "apertura",
+  "id_cuenta": {
+    "$oid": "66457e05d8256d2dacc7a9e8"
+  }
+},
+{
+  "_id": {
+    "$oid": "66513c5d49ad0f07a8cb0055"
+  },
+  "fecha": {
+    "$date": "2023-05-04T00:00:00.000Z"
+  },
+  "valor": 200,
+  "tipo": "cierre",
+  "id_cuenta": {
+    "$oid": "66457e05d8256d2dacc7a9e8"
+  }
+},
+{
+  "_id": {
+    "$oid": "66513c5d49ad0f07a8cb0054"
+  },
+  "fecha": {
+    "$date": "2023-05-03T00:00:00.000Z"
+  },
+  "valor": 300,
+  "tipo": "retiro",
+  "id_cuenta": {
+    "$oid": "66457e05d8256d2dacc7a9e8"
+  }
+}]
