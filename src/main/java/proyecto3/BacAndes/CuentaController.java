@@ -101,16 +101,19 @@ public class CuentaController {
    
         List<Obcs> listaObcs = obcsRepository.findAll();
         Stream<Obcs> filtereObcs = listaObcs.stream();
-
+        int saldo = 0;
 
         if (id_cuenta != null && ObjectId.isValid(id_cuenta)) {
             ObjectId id_cuenta2 = new ObjectId(id_cuenta);
             filtereObcs = filtereObcs .filter(o -> o.getId_cuenta() != null && id_cuenta2.equals(o.getId_cuenta()));
-            
+            ObjectId idcuentaId= new ObjectId(id_cuenta);
+            saldo = cuentaRepository.findById(idcuentaId).get().getSaldo();
         }
+            
+       
          
-        ObjectId idcuentaId= new ObjectId(id_cuenta);
-        int saldo = cuentaRepository.findById(idcuentaId).get().getSaldo();
+       
+
 
 
         
@@ -118,4 +121,5 @@ public class CuentaController {
         return new ModelAndView("extractoNuevo").addObject("obcs", filtereObcs).addObject("saldo", saldo);
     }
 }
+
 

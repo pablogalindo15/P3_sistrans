@@ -80,7 +80,7 @@ public class ObcsController {
         else if(obcs.getTipo().equals("retiro")){
             Cuenta cuentaNueva2 = cuentaRepository.findById(id_cuenta).orElseThrow(() -> new RuntimeException("Cuenta no encontrada"));
             cuentaService.deleteCuenta(id_cuenta);
-            cuentaNueva2.setSaldo(cuentaNueva2.getSaldo() + obcs.getValor());
+            cuentaNueva2.setSaldo(cuentaNueva2.getSaldo() - obcs.getValor());
             cuentaNueva2.setFecha_ultima_transaccion(new Date());
             cuentaService.saveCuenta(cuentaNueva2);
         }
