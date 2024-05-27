@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de OBCS</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Lista de OBCS</h1>
+        <a th:href="@{/obcs/nuevo}" class="btn btn-primary mb-3">Nueva OBCS</a>
+        
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>TIPO</th>
+                    <th>VALOR</th>
+                    <th>CUENTA</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="obc : ${obcs}">
+                    <td th:text="${obc._id}"></td>
+                    <td th:text="${obc.tipo}"></td>
+                    <td th:text="${obc.valor}"></td>
+                    <td th:text="${obc.id_cuenta}"></td>
+                   
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        </div>
+    </div>
+</body>
+</html>

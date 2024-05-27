@@ -1,34 +1,22 @@
 package proyecto3.BacAndes;
-
+import java.util.Date;
 
 import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 
-
-@Document(collection="cuentas")
+@Document(collection="obcs")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cuenta {
-    @Id
+public class Obcs {
     private ObjectId _id;
+    private Date fecha;
+    private Integer valor;
     private String tipo;
-    private int saldo;
-    private String estado;
-    private ObjectId id_cliente;
-    private Date fecha_ultima_transaccion; 
-
-    
-
-    
-    
+    private ObjectId id_cuenta;
 }
-
-

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +20,10 @@ public class CuentaService {
 
     public Optional<Cuenta> singleCuenta(ObjectId id) {
         return cuentaRepository.findById(id);
+    }
+
+    public List<Cuenta> darCuentasIdUsuario(String idCliente) {
+        return cuentaRepository.findCuentasByIdCliente(idCliente);
     }
 
     public void saveCuenta(Cuenta cuenta) {

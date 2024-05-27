@@ -11,6 +11,59 @@
 <body>
     <div class="container mt-4">
         <h1>Lista de Cuentas</h1>
+
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+                Búsqueda avanzada
+            </div>
+            <div class="card-body">
+                <form th:action="@{/cuentas}" method="get">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="tipo">Tipo de Cuenta:</label>
+                                <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ingrese el tipo de cuenta">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="idCliente">ID de Cliente:</label>
+                                <input type="text" class="form-control" id="idCliente" name="idCliente" placeholder="Ingrese el ID de cliente">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="minSaldo">Mínimo Saldo:</label>
+                                <input type="number" class="form-control" id="minSaldo" name="minSaldo" placeholder="Saldo mínimo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="maxSaldo">Máximo Saldo:</label>
+                                <input type="number" class="form-control" id="maxSaldo" name="maxSaldo" placeholder="Saldo máximo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="minFechaUltimaTransaccion">Desde Fecha (última transacción):</label>
+                                <input type="date" class="form-control" id="minFechaUltimaTransaccion" name="minFechaUltimaTransaccion">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
         <a th:href="@{/cuentas/nuevo}" class="btn btn-primary mb-3">Nueva Cuenta</a>
         
         <table class="table table-bordered table-hover">

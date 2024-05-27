@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de OBCS</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Extracto</h1>
+
+        <!-- Display the saldo value -->
+        <div class="alert alert-info" role="alert">
+            <strong>Saldo Final mes:</strong> <span th:text="${saldo}"></span>
+        </div>
+
+        <div class="card-body">
+            <form th:action="@{/cuentas/extractos}" method="get">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_cuenta">ID de Cuenta:</label>
+                        <input type="text" class="form-control" id="id_cuenta" name="id_cuenta" placeholder="Ingrese el ID de la cuenta">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+   
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>TIPO</th>
+                    <th>VALOR</th>
+                    <th>CUENTA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="obc : ${obcs}">
+                    <td th:text="${obc._id}"></td>
+                    <td th:text="${obc.tipo}"></td>
+                    <td th:text="${obc.valor}"></td>
+                    <td th:text="${obc.id_cuenta}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver atrás</a>
+        </div>
+    </div>
+</body>
+</html>
